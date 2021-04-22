@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Field Notes</title>
+    <link rel="stylesheet" href="public/styles/styles.css">
+    <script src="https://kit.fontawesome.com/6c117c7d34.js" crossorigin="anonymous"></script>
+    <script src="public/js/scripts.js" defer></script>
+</head>
+
+<body>
+    <div class="notebook">
+        <div class="nav nav-no-bottom-margin">
+            <div class="nav-icon">
+                <i class="fas fa-bars">
+                </i>
+            </div>
+            <ul class="navList">
+                <li><a href="library.html">Library</a>
+                <li>
+                <li><a href="new.html">New ID</a>
+                <li>
+                <li><a href="help.html">Help</a>
+                <li>
+                <li><a href="resources.html">Resources</a>
+                <li>
+                    <li class="theme">Choose Theme</li>
+                </ul>
+        </div>
+        <div class="library-sort">
+            <h6>Filter:</h6>
+            <select id="sort" name="sort">
+                <option value="date">Date</option>
+                <option value="type">Type</option>
+                <option value="location">Location</option>
+                </optgroup>
+            </select>
+            <select id="subSort" name="subSort">
+                <option value="season">Season</option>
+                <option value="season">Spring</option>
+                <option value="date">Summer</option>
+                <option value="type">Fall</option>
+                <option value="location">Winter</option>
+            </select>
+            <div class="showAll"><input type="checkbox" id=showall name=showall><label for="showall">Show all</label>
+            </div>
+        </div>
+        <div class="library-container">
+            <div class="observations">
+                <ul>
+                    <li> <i class="fas fa-chevron-down"></i></li>
+                    <li>Date: 4/19/2021 </li>
+                    <li><i class="fas fa-grip-lines-vertical"></i></li>
+                    <!-- <li> Species</li> -->
+                    <li>Location: Ames Nowell State Forest</li>
+                </ul>
+                <div class="imgs">
+                    <div class="individual-card hide"><img src="public/imgs/library/chicken.jpeg">
+                        <ul>
+                            <li>Name: Chicken of the Woods</li>
+                            <li>Type: Mushroom</li>
+                            <li class="edit"><a href="edit.html">Edit</a></li>
+                        </ul>
+                    </div>
+                    <div class="individual-card hide"><img src="public/imgs/library/crocus.jpg">
+                        <ul>
+                            <li>Name: Crocus</li>
+                            <li>Type: Flower</li>
+                            <li><a href="edit.html">Edit</a></li>
+                        </ul>
+                    </div>
+                    <img src="public/imgs/library/eveningprimrose.jpg" class="hide">
+                    <img src="public/imgs/library/lesserceladine.jpg" class="hide">
+                    <img src="public/imgs/library/ramps.jpg" class="hide">
+                    <img src="public/imgs/library/reddeadnettle.jpg" class="hide">
+                    <img src="public/imgs/library/reishi.jpg" class="hide">
+                    <img src="public/imgs/library/turkeytail.jpg" class="hide">
+                </div>
+                <ul>
+                    <li> <i class="fas fa-chevron-down"></i></li>
+                    <li>Date: 4/19/2021 </li>
+                    <li><i class="fas fa-grip-lines-vertical"></i></li>
+                    <!-- <li> Species</li> -->
+                    <li>Location: Ames Nowell State Forest</li>
+                </ul>
+            </div>
+            <!-- <div class="hide card-desc">
+                <ul>
+                    <li>Date: 4/19/2021 </li>
+                    <li>Location: Ames Nowell</li>
+                    <li>Species: Chicken of the Woods</li>
+                </ul>
+            </div>
+            <img src="public/imgs/library/eveningprimrose.jpg" class="hide"><div class="hide card-desc">
+                <ul>
+                    <li>Date: 4/19/2021 </li>
+                    <li>Location: Ames Nowell</li>
+                    <li>Species: Chicken of the Woods</li>
+                </ul>
+            </div>
+            <img src="public/imgs/library/lesserceladine.jpg" class="hide"><div class="hide card-desc">
+                <ul>
+                    <li>Date: 4/19/2021 </li>
+                    <li>Location: Ames Nowell</li>
+                    <li>Species: Chicken of the Woods</li>
+                </ul>
+            </div>
+            <img src="public/imgs/library/ramps.jpg" class="hide"><div class="hide card-desc">
+                <ul>
+                    <li>Date: 4/19/2021 </li>
+                    <li>Location: Ames Nowell</li>
+                    <li>Species: Chicken of the Woods</li>
+                </ul>
+            </div>
+            <img src="public/imgs/library/reddeadnettle.jpg" class="hide"><div class="hide card-desc">
+                <ul>
+                    <li>Date: 4/19/2021 </li>
+                    <li>Location: Ames Nowell</li>
+                    <li>Species: Chicken of the Woods</li>
+                </ul>
+            </div>
+            <img src="public/imgs/library/reishi.jpg" class="hide"><div class="hide card-desc">
+                <ul>
+                    <li>Date: 4/19/2021 </li>
+                    <li>Location: Ames Nowell</li>
+                    <li>Species: Chicken of the Woods</li>
+                </ul>
+            </div>
+            <img src="public/imgs/library/turkeytail.jpg" class="hide"><div class="hide card-desc">
+                <ul>
+                    <li>Date: 4/19/2021 </li>
+                    <li>Location: Ames Nowell</li>
+                    <li>Species: Chicken of the Woods</li>
+                </ul>
+            </div> -->
+        </div>
+    </div>
+    <script>
+                let img = document.querySelectorAll(".individual-card");
+        let carrot = document.querySelector(".fa-chevron-down")
+
+        
+        const showHide = function(e) {
+            for (let i = 0; i < img.length; i++)
+            img[i].classList.toggle("show")
+            e.stopPropagation()
+        }
+        
+        carrot.addEventListener("click", showHide);
+    </script>
+</body>
+
+</html>

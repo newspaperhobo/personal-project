@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Field Notes</title>
+    <link rel="stylesheet" href="public/styles/styles.css">
+    <script src="https://kit.fontawesome.com/6c117c7d34.js" crossorigin="anonymous"></script>
+    <script src="public/js/scripts.js" defer></script>
+</head>
+
+<body>
+    <div class="notebook">
+        <div class="nav nav-no-bottom-margin">
+            <div class="nav-icon">
+                <i class="fas fa-bars"></i></div>
+                <ul class="navList">
+                    <li><a href="library.html">Library</a><li>
+                    <li><a href="new.html">New ID</a><li>
+                    <li><a href="help.html">Help</a><li>
+                    <li><a href="resources.html">Resources</a><li>
+                    <li class="theme">Choose Theme</li>
+                    </ul>
+            </div>
+        <div class="more-info-body">
+            <h6>The best identifications include lots of details. <h6>Try and fill out as much infomation as you can!
+                </h6>
+            </h6>
+            <h6 class="help-link"><a href="help.html">What do I log?</a></h6>
+            <form>
+                <div class="form-line">
+                    <label for="userDate">Date</label>
+                    <input type="date" id="userDate" name="userDate">
+                </div>
+                <div class="form-line">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name">
+                </div>
+                <div class="form-line">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location">
+                </div>
+                <div class="form-line">
+                    <label for="notes">Notes</label>
+                <textarea></textarea>
+                </div>
+                <div class="form-line">
+                    <label for="photo">Photo</label>
+                <input type="file" id="userPhoto" class="userPhoto">
+                </div>
+            </form>
+        <a href="library.html"><button href="">Submit</button></a>
+        </div>
+    </div>
+</body>
+
+</html>
