@@ -35,7 +35,7 @@
 
         let body = document.querySelector("body"); 
         let icons = document.querySelectorAll("i");
-        // add hover black
+        let links = document.querySelectorAll("a");
         let notebook = document.querySelector(".notebook");
         let nav = document.querySelector(".nav");
         let filter = document.querySelector(".library-sort");

@@ -68,6 +68,22 @@ a:hover {
     /* color: black; */
 }
 
+li.edit a {
+    color: red;
+}
+li.details a {
+    font-style: oblique;
+    text-decoration: underline;
+}
+
+/*li.edit a:hover {
+    color: var(--primary-nav-font-color);
+} */
+
+.individual-card a {
+    color: black;
+}
+
 ul {
     margin:0;
     padding:0;
@@ -297,6 +313,8 @@ input#userPhoto {
     font-size: 0.4em;
 }
 
+
+
 /* library page option 1 - desc hidden */
 /* .library-container {
     margin: 0 0.5em;
@@ -370,6 +388,13 @@ input#userPhoto {
     border: 1px solid black;
     text-align: center;
     background-color: lightgray;
+}
+
+.individual-card-img {
+    width:100%;
+    height: 350px;
+    background-image: url('../imgs/library/chicken.jpeg');
+    background-size: cover;
 }
 
 .individual-card ul {
