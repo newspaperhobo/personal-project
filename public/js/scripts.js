@@ -47,7 +47,7 @@
             for (let i=0; i < icons.length; i++) {
             icons[i].style.color = "black";
             }
-            notebook.style.backgroundImage = "url('../public/imgs/backgrounds/amanita3.png')";
+            notebook.style.backgroundImage = "url('/imgs/backgrounds/amanita3.png')";
             nav.style.backgroundColor = "red";
             filter.style.backgroundColor = "red";
             for (let i=0; i < themes.length; i++) {

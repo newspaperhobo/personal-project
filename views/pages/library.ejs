@@ -1,35 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Field Notes</title>
-    <link rel="stylesheet" href="public/styles/styles.css">
-    <script src="https://kit.fontawesome.com/6c117c7d34.js" crossorigin="anonymous"></script>
-    <script src="public/js/scripts.js" defer></script>
-</head>
-
-<body>
-    <div class="notebook">
-        <div class="nav nav-no-bottom-margin">
-            <div class="nav-icon">
-                <i class="fas fa-bars">
-                </i>
-            </div>
-            <ul class="navList">
-                <li><a href="library.html">Library</a>
-                <li>
-                <li><a href="new.html">New ID</a>
-                <li>
-                <li><a href="help.html">Help</a>
-                <li>
-                <li><a href="resources.html">Resources</a>
-                <li>
-                    <li class="theme">Choose Theme</li>
-                </ul>
-        </div>
+<%- include ('../partials/head') -%>
+<%- include ('../partials/navloggedin') -%>
         <div class="library-sort">
             <h6>Filter:</h6>
             <select id="sort" name="sort">
@@ -63,11 +33,11 @@
                         <ul>
                             <li>Name: Chicken of the Woods</li>
                             <li>Type: Mushroom</li>
-                            <li class="details"><a href="details.html">Details</a></li>
-                            <li class="edit"><a href="edit.html">Edit</a></li>
+                            <li class="details"><a href="library/details">Details</a></li>
+                            <li class="edit"><a href="/library/update">Edit</a></li>
                         </ul>
                     </div>
-                    <div class="individual-card hide"><img src="public/imgs/library/crocus.jpg">
+                    <div class="individual-card hide"><img src="/imgs/library/crocus.jpg">
                         <ul>
                             <li>Name: Crocus</li>
                             <li>Type: Flower</li>

@@ -1,0 +1,8 @@
+# express node_modules
+/node_modules
+
+# alt version of library
+/views/pages/library2.ejs
+
+# env
+.env

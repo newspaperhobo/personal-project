@@ -118,7 +118,7 @@ p {
     overflow-x: scroll;
     background-color: rgb(189, 163, 134);
     height: 97vh;
-    min-height: 750px;
+    min-height: 735px;
     max-width: 768px;
     margin: 0 auto;
     border: 2px black solid;
@@ -130,10 +130,10 @@ p {
 }
 
 .nav {
+    margin-bottom: 0.3em;
     position: sticky;
     top:0;
     padding: .7em 0.3em;
-    margin-bottom: 0.5em;
     background-color: rgb(25, 51, 199);
     border-top-right-radius: 57px;
     /* theme 2 nav */
@@ -144,10 +144,22 @@ p {
 }
 
 ul li.theme {
-    margin-top: 0.6em;
+    margin: 0.6em auto;
+    margin-bottom: 0.6em;
     text-align: center;
-    width: 150px;
-    font-size: 0.5em;
+    width: 275px;
+    font-size: .8em;
+    padding: .2em;
+    border: 2px black solid;
+    color:black;
+    background-color:var(--primary-button-yellow)
+}
+ul li.theme-button {
+    margin: 0em auto;
+    margin-bottom: 0.6em;
+    text-align: center;
+    width: 45%;
+    font-size: .8em;
     padding: .2em;
     border: 2px black solid;
     color:black;
@@ -415,6 +427,10 @@ input#userPhoto {
 .library-sort > div {
     max-width:450px;
     }
+
+/* .login-or-register {
+    margin-top: 6em;
+} */
 
 /* desktop */
 @media screen and (min-width: 1024px) {

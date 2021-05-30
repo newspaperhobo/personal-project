@@ -1,0 +1,22 @@
+const express = require('express');
+const router = express.Router();
+const siteController = require('../controllers/site-controller')
+
+router.route('/')
+    .get(siteController.index);
+router.route('/login_register')
+    .get(siteController.login_register);
+router.route('/login')
+    .get(siteController.login);
+router.route('/register')
+    .get(siteController.register);
+router.route('/about')
+    .get(siteController.about);
+router.route('/dashboard')
+    .get(siteController.dashboard);
+router.route('/help')
+    .get(siteController.help);
+router.route('/resources')
+    .get(siteController.resources);
+
+module.exports = router;

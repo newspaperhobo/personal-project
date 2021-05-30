@@ -1,0 +1,44 @@
+<%- include ('../partials/head') -%>
+<%- include ('../partials/navloggedin') -%>
+        <div class="more-info-body">
+            <h6>The best identifications include lots of details. <h6>Try and fill out as much infomation as you can!
+                </h6>
+            </h6>
+            <h6 class="help-link"><a href="/help">What do I log?</a></h6>
+            <form action="/library/:id" method="POST">
+                <div class="form-line">
+                    <label for="date">Date</label>
+                    <input type="date" id="date" name="date">
+                </div>
+                <div class="form-line">
+                    <label for="name">ID Name</label>
+                    <input type="text" id="name" name="id_name">
+                </div>
+                <div class="form-line">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location">
+                </div>
+                <div class="form-line">
+                    <label for="type">Type:</label>
+                    <input type="radio" id="mushroom" name="classification" value="Mushroom"><label for="mushroom">Mushroom</label>
+                    <input type="radio" id="plant" name="classification" value="Plant"><label for="plant">Plant</label>
+                    <input type="radio" id="tree" name="classification" value="Tree"><label for="tree">Tree</label>
+                </div>
+                <div class="form-line">
+                    <label for="notes">Notes</label>
+                    <textarea name="notes"></textarea>
+                </div>
+                <div class="form-line">
+                    <label for="photo">Photos</label>
+                    <input type="file" id="userPhoto" class="userPhoto" name="img1">
+                    <input type="file" id="userPhoto" class="userPhoto" name="img2">
+                </div>
+                <div class="form-line">
+                    <label for="photo">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <input type="file" id="userPhoto" class="userPhoto" name="img3">
+                    <input type="file" id="userPhoto" class="userPhoto" name="img4">
+                </div>
+                <button>Submit</button></a>
+            </form>
+        </div>
+<%- include ('../partials/footer') -%>
