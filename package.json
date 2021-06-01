@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/newspaperhobo/personal-project#readme",
   "dependencies": {
+    "@googlemaps/js-api-loader": "^1.11.4",
     "bcrypt": "^5.0.1",
     "dotenv": "^10.0.0",
     "ejs": "^3.1.6",

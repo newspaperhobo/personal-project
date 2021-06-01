@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="/styles/styles.css">
     <script src="https://kit.fontawesome.com/6c117c7d34.js" crossorigin="anonymous"></script>
     <script src="/js/scripts.js" defer></script>
-    <script src="/js/maps.js" defer></script>
+    <style>
+    .individual-card-img {
+        width:100%;
+        height: 350px;
+        background-image: url('imgs/library/<%= log.img1 %>');
+        background-size: cover;
+    }
+    </style>
 </head>
 <body>
-<%- include ('../partials/navloggedin') -%>
-        <h4>Drop a pin to get started</h4>
-        <div id="map"></div>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwp2cvie-D6DL__W3QCg9CGLalWIj61gk&callback=initMap&libraries=&v=weekly" async ></script>
-</body>
-</html>
-

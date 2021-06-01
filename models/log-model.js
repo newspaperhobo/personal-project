@@ -4,7 +4,7 @@ const { Schema } = mongoose
 const logSchema = new Schema ({
     date: {
         type: Date,
-        default: Date.now
+        default: Date.now,
     },
     id_name: {
         type: String,

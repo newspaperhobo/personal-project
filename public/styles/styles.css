@@ -104,6 +104,10 @@ p {
     text-align: center;
 }
 
+.blue {
+    color: blue;
+}
+
 .hide {
     display: none;
 }
@@ -191,10 +195,10 @@ ul li.theme-button {
     padding: .3em .5em;
 }
 
-.resources h4, ul {
+ul.resources h4 {
     text-align: left;
 }
-.resources ul {
+ul.resources {
     width: 100%;
     text-align: left;
 }
@@ -291,7 +295,7 @@ margin: 0.7em 0;
     padding: 0.5em;
 }
 .more-info-body textarea {
-    padding: 4em 0;
+    height: 50px;
     flex:2;
 }
 
@@ -370,10 +374,10 @@ input#userPhoto {
     font-size: 1.5em;
 }
 
-.map {
-    margin: .3em .8em;
-    width:700px;
-    height: auto;
+#map {
+    margin: 0 auto;
+    width:90%;
+    height: 100%;
 }
 
 .help-body {
@@ -394,19 +398,12 @@ input#userPhoto {
     height: 350px;
 }
 .individual-card {
-    margin: 0.2em 1em;
-    flex-direction: column;
+    margin: 1em;
+    flex-direction: row;
     width: 280px;
     border: 1px solid black;
     text-align: center;
     background-color: lightgray;
-}
-
-.individual-card-img {
-    width:100%;
-    height: 350px;
-    background-image: url('../imgs/library/chicken.jpeg');
-    background-size: cover;
 }
 
 .individual-card ul {
@@ -419,18 +416,28 @@ input#userPhoto {
 }
 .imgs {
     margin: 0em 0.3em;
-    display:flex;
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
 .library-sort > div {
     max-width:450px;
-    }
+}
 
-/* .login-or-register {
-    margin-top: 6em;
-} */
+
+ul.details-page > * {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.log-details-img {
+    width:60%;
+    margin-bottom: 0.6em;
+}
+
 
 /* desktop */
 @media screen and (min-width: 1024px) {

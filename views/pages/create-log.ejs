@@ -7,10 +7,6 @@
             <h6 class="help-link"><a href="/help">What do I log?</a></h6>
             <form action="/library/:id" method="POST">
                 <div class="form-line">
-                    <label for="date">Date</label>
-                    <input type="date" id="date" name="date">
-                </div>
-                <div class="form-line">
                     <label for="name">ID Name</label>
                     <input type="text" id="name" name="id_name">
                 </div>
@@ -18,10 +14,12 @@
                     <label for="location">Location</label>
                     <input type="text" id="location" name="location">
                 </div>
+                <button>Use my current location</button>
                 <div class="form-line">
                     <label for="type">Type:</label>
                     <input type="radio" id="mushroom" name="classification" value="Mushroom"><label for="mushroom">Mushroom</label>
                     <input type="radio" id="plant" name="classification" value="Plant"><label for="plant">Plant</label>
+                    <input type="radio" id="tree" name="classification" value="Tree"><label for="tree">Flower</label>
                     <input type="radio" id="tree" name="classification" value="Tree"><label for="tree">Tree</label>
                 </div>
                 <div class="form-line">

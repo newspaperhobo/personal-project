@@ -28,29 +28,9 @@
                     <li>Location: Ames Nowell State Forest</li>
                 </ul>
                 <div class="imgs">
-                    <div class="individual-card hide"><div class="individual-card-img"></div>
-                    <!-- <img src="public/imgs/library/chicken.jpeg"> -->
-                        <ul>
-                            <li>Name: Chicken of the Woods</li>
-                            <li>Type: Mushroom</li>
-                            <li class="details"><a href="library/details">Details</a></li>
-                            <li class="edit"><a href="/library/update">Edit</a></li>
-                        </ul>
-                    </div>
-                    <div class="individual-card hide"><img src="/imgs/library/crocus.jpg">
-                        <ul>
-                            <li>Name: Crocus</li>
-                            <li>Type: Flower</li>
-                            <li class="details"><a href="edit.html">Details</a></li>
-                            <li class="edit"><a href="edit.html">Edit</a></li>
-                        </ul>
-                    </div>
-                    <img src="public/imgs/library/eveningprimrose.jpg" class="hide">
-                    <img src="public/imgs/library/lesserceladine.jpg" class="hide">
-                    <img src="public/imgs/library/ramps.jpg" class="hide">
-                    <img src="public/imgs/library/reddeadnettle.jpg" class="hide">
-                    <img src="public/imgs/library/reishi.jpg" class="hide">
-                    <img src="public/imgs/library/turkeytail.jpg" class="hide">
+                <% for (log of data) { %>
+                    <%- include('../partials/logcard', { log: log }) -%>
+                  <% } %>
                 </div>
                 <ul>
                     <li> <i class="fas fa-chevron-down"></i></li>

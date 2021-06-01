@@ -1,10 +1,11 @@
-<div class="imgs">
-    <div class="individual-card hide"><div class="individual-card-img"></div>
-    <!-- <img src="public/imgs/library/chicken.jpeg"> -->
+<div class="individual-card hide">
+<div class="individual-card-img">
+    <img src="imgs/library/<%= log.img1 %>">
+        </div>
         <ul>
-            <li>Name: Chicken of the Woods</li>
-            <li>Type: Mushroom</li>
-            <li class="details"><a href="/<%= log.id %>">Details</a></li>
-            <li class="edit"><a href="/edit/<%= log.id %>">Edit</a></li>
+            <li>Name: <%= log.id_name %></li>
+            <li>Type: <%= log.classification %></li>
+            <li class="details"><a href="library/<%= log._id %>">Details</a></li>
+            <li class="edit"><a href="/edit/<%= log._id %>">Edit</a></li>
         </ul>
     </div>

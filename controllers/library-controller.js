@@ -18,11 +18,17 @@ module.exports = {
         response.render('pages/create-log')
     },
     id_details_get: (request, response) => {
-        response.render('pages/details')
+        const { id } = request.params;
+        Log.findOne({ _id: id }, (error, foundLog) => {
+            if (error) {
+                return error
+            } else {
+                response.render('pages/details', { log: foundLog })
+            }
+        })
     },
     id_details_post: (request, response) => {
         const newLog = new Log({
-            date: request.body.date,
             id_name: request.body.id_name,
             location: request.body.location,
             classification: request.body.classification,

@@ -70,3 +70,8 @@
         //     theme.style.backgroundColor = "var(---primary-button-yellow)"
         // }
         
+
+let dateInput = document.getElementById("date");
+let currentDate = new Date().toLocaleDateString("en-US").split("/")
+let formattedDate = `${currentDate[2]}-${currentDate[0]}-${currentDate[1]}`
+dateInput.setAttribute = ("value", formattedDate);
