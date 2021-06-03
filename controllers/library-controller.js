@@ -1,5 +1,6 @@
 const { response, request } = require("express");
 const Log = require('../models/log-model')
+const mapsAPI = process.env.MAPS_URL
 
 module.exports = {
     library_get: (request, response) => {
@@ -12,7 +13,7 @@ module.exports = {
         })
     },
     map_get: (request,response) => {
-        response.render('pages/create-pin')
+        response.render('pages/create-pin', { mapsAPI : mapsAPI })
     },
     create_log_get: (request, response) => {
         response.render('pages/create-log')

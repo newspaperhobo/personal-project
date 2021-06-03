@@ -1,8 +1,9 @@
 <div class="individual-card hide">
-<div class="individual-card-img">
-    <img src="imgs/library/<%= log.img1 %>">
+    <div class="individual-card-img" style="background-image:url(imgs/library/<%= log.img1 %>);">
+    <!-- <img src="imgs/library/<%= log.img1 %>"> -->
         </div>
         <ul>
+
             <li>Name: <%= log.id_name %></li>
             <li>Type: <%= log.classification %></li>
             <li class="details"><a href="library/<%= log._id %>">Details</a></li>

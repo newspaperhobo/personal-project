@@ -1,31 +1,37 @@
-let map, infoWindow;
+let map, infoWindow, newMarker;
 
 function initMap() {
-    map = new google.maps.Map(document.getElementById('map'));
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition((position) => {
-            const currentPosition = {
+            currentPosition = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude,
-            }
+            } 
+            map = new google.maps.Map(document.getElementById('map'),{
+               center: currentPosition,
+               zoom: 20 
+            });
             infoWindow = new google.maps.InfoWindow();
-            infoWindow.setPosition(currentPosition);
-            map.setCenter(currentPosition);
-            map.setZoom(20);
+            infoWindow.setPosition(currentPosition)
             infoWindow.open(map);
             infoWindow.setContent("Your location!");
             function addMarker(location, map) {
-                new google.maps.Marker({
+                newMarker = new google.maps.Marker({
                     position: location,
                     map: map,
                     draggable: true,
                 }); console.log(location.lat(), location.lng())
             }
-            google.maps.event.addListener(map, "click", (event) => {
-                addMarker(event.latLng, map);
+            let clickEventListener = google.maps.event.addListener(map, "click", (event) => {
+            let clickEventPosition = event.latLng
+            addMarker(clickEventPosition, map);
+            console.log(clickEventPosition)
+            if (clickEventPosition) {
+            google.maps.event.removeListener(clickEventListener);
+            }
             })
         })
-    } else {
-        
-    }
-} 
+        } else {
+            
+        }
+    } 

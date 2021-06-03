@@ -329,7 +329,11 @@ input#userPhoto {
     font-size: 0.4em;
 }
 
-
+.individual-card-img {
+    width:100%;
+    height: 350px;
+    background-size: cover;
+}
 
 /* library page option 1 - desc hidden */
 /* .library-container {
