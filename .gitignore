@@ -6,3 +6,7 @@
 
 # env
 .env
+
+# maps icons
+/public/imgs/maps-icons/marker-test-wide.png
+/public/imgs/maps-icons/marker-test2.png
