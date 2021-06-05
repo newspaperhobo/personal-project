@@ -1,10 +1,10 @@
 <%- include ('../partials/head') -%>
 <%- include ('../partials/navpublic') -%>
   <div class="login-form">
-    <form><label for="username">Email</label>
+    <form action="/register" method="POST"><label for="username">Username</label>
       <input type="text" id="username" name="username">
       <label for="password">Password</label>
       <input type="password" id="password" name="password">
+      <button class="login">Submit</button>
     </form>
-    <a href="/library/new-form"><button class="login">Submit</button></a>
 <%- include ('../partials/footer') -%>

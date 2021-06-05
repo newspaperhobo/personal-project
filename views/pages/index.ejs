@@ -1,13 +1,17 @@
-<%- include ('../partials/head') -%>
+<%- include ('../partials/head'), -%>
+<% if (user) { %>
+<%- include ('../partials/navloggedin') -%>
+<% } else { %>
 <%- include ('../partials/navpublic') -%>
-                <div class= "main">
-                <h2>FIELD NOTES</h2>
-                <!-- change text to "click right" when in desktop mode -->
-                <h5 class="index-mobile-h5">
-                    <a href="/login_register">Swipe left to start logging!</h5></a>
-                    <h5 class="index-desktop-h5">
-                        <a href="/login_register">Start logging!</a></h5>
-                        <!-- want to add hover over arrow like turning page of a book  -->
+<% } %>
+<div class= "main">
+    <h1>FIELD NOTES</h1>
+    <% if (!user) { %>
+                <p style="text-align: center">Are you interested in foraging and finding edible plants? <p style="text-align: center;">Want to digitally track your natural surroundings in a personalized space?</p><p style="text-align: center; font-size: 0.7em; color: blue; margin-bottom: 0.3em">Join Field Notes and:</p>
+                    <h2 class="index-desktop-h5">
+                        <a href="/register">Start logging!</a></h2>
+                        <% } %>
+                        <p style="text-align: center; margin: 0.3 em auto">Make this space yours: </p>
                         <ul><li class="theme">Pick Your Theme</li></ul>
             <div class="right-arrow">
             </div>

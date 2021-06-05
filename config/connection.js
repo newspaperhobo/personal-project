@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.DB_URL, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: true}, error => {
+mongoose.connect(process.env.DB_URL, {
+    useNewUrlParser: true, 
+    useUnifiedTopology: true, 
+    useFindAndModify: true, 
+    useCreateIndex: true 
+}, error => {
     if (error) {
         console.log('Error connecting to MongoDB server.')
     } else {
