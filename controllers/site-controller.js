@@ -1,6 +1,7 @@
 const { request, response } = require('express');
 const passport = require('passport');
 const User = require('../models/user-model');
+const mapsAPI = process.env.MAPS_URL
 
 module.exports = {
     index: (request, response) => {
@@ -51,9 +52,7 @@ module.exports = {
         response.render('pages/about')
     },
     dashboard: (request, response) => {
-        if (request.isAuthenticated()) {
         response.render('pages/dashboard')
-        }
     },
     help: (request, response) => {
         response.render('pages/help')
@@ -61,9 +60,7 @@ module.exports = {
     resources: (request, response) => {
         response.render('pages/resources')
     },
-    settings: (request, response) => {
-        if (request.isAuthenticated()) {
-        response.render('pages/settings')
-        }
+    map_view_get: (request, response) => {
+        response.render('pages/map-view', { mapsAPI : mapsAPI })
     }
 }

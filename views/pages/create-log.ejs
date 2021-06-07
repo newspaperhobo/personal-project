@@ -1,30 +1,57 @@
-<%- include ('../partials/head') -%>
-<%- include ('../partials/navloggedin') -%>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Field Notes</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+    <script src="https://kit.fontawesome.com/6c117c7d34.js" crossorigin="anonymous"></script>
+    <script src="/js/scripts.js" defer></script>
+    <script src="/js/maps-create.js" defer></script>
+</head>
+
+<body>
+    <%- include ('../partials/navloggedin') -%>
         <div class="more-info-body">
             <h6>The best identifications include lots of details. <h6>Try and fill out as much infomation as you can!
                 </h6>
             </h6>
             <h6 class="help-link"><a href="/help">What do I log?</a></h6>
+
+            <h6>Drop a pin to get started</h6>
             <form action="/library/:id" method="POST">
-                <div class="form-line">
-                    <label for="name">ID Name</label>
-                    <input type="text" id="name" name="id_name">
+                <div id="map"></div>
+                <div class="form-line form-flex">
+                    <label for="lat">Latitude</label>
+                    <input type="text" id="lat" name="lat" placeholder="Latitude">
+                    <label for="lng">Longitude</label>
+                    <input type="text" id="lng" name="lng" placeholder="Longitude">
                 </div>
                 <div class="form-line">
                     <label for="location">Location</label>
-                    <input type="text" id="location" name="location">
+                    <input type="text" id="location" name="location"
+                        placeholder="The park or area you're exploring!">
                 </div>
-                <button>Use my current location</button>
+                <div class="form-line">
+                    <label for="name">ID Name</label>
+                    <input type="text" id="name" name="id_name" placeholder="What did you find?">
+                </div>
                 <div class="form-line">
                     <label for="type">Type:</label>
-                    <input type="radio" id="mushroom" name="classification" value="Mushroom"><label for="mushroom">Mushroom</label>
-                    <input type="radio" id="plant" name="classification" value="Plant"><label for="plant">Plant</label>
-                    <input type="radio" id="tree" name="classification" value="Tree"><label for="tree">Flower</label>
-                    <input type="radio" id="tree" name="classification" value="Tree"><label for="tree">Tree</label>
-                </div>
+                    <input type="radio" id="classification" name="classification" value="Mushroom"><label
+                        for="mushroom">Mushroom</label>
+                    <input type="radio" id="classification" name="classification" value="Plant"><label for="plant">Plant</label>
+                    </div>
+                    <div class="form-line">
+                        <label for="type">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <input type="radio" id="classification" name="classification" value="Flower"><label for="flower">Flower</label>
+                    <input type="radio" id="classification" name="classification" value="Tree"><label for="tree">Tree</label>
+                    </div>
                 <div class="form-line">
                     <label for="notes">Notes</label>
-                    <textarea name="notes"></textarea>
+                    <textarea name="notes" placeholder="Tell us more about your cool find!"></textarea>
                 </div>
                 <div class="form-line">
                     <label for="photo">Photos</label>
@@ -39,4 +66,7 @@
                 <button>Submit</button></a>
             </form>
         </div>
-<%- include ('../partials/footer') -%>
+        </div>
+        <script src="<%= mapsAPI %>" async></script>
+</body>
+</html>

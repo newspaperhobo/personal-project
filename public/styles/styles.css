@@ -134,10 +134,10 @@ p {
 }
 
 .nav {
-    margin-bottom: 0.3em;
+    z-index: 2;
     position: sticky;
     top:0;
-    padding: .7em 0.3em;
+    padding: .8em 0.3em;
     background-color: rgb(25, 51, 199);
     border-top-right-radius: 57px;
     /* theme 2 nav */
@@ -274,7 +274,13 @@ margin: 0.7em 0;
     margin: 0 auto;
     max-width: 500px;
     display: flex;
+    /* flex-wrap: wrap; */
     margin-bottom: 0.4em;
+}
+
+.form-flex {
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -298,20 +304,20 @@ input#userPhoto {
     margin-top: 10px;
     height: 20px;
 }
-.library-sort {
+div.library-sort {
     position: sticky;
     top:123px;
     display: flex;
-    justify-content: space-around;
+    justify-content: left;
     background-color: var(--primary-nav-background);
     color:white;
     border-top: 10px white solid;
 }
 
-
 .library-sort select, h6 {
     /* border:2px black solid; */
     align-self: center;
+    margin: 0.5em;
 }
 
 .showAll {
@@ -374,9 +380,17 @@ input#userPhoto {
 }
 
 #map {
+    z-index: 1;
+    margin: 0 auto;
+    width:100%;
+    height: 500px;
+    margin-bottom: 0.3em;
+}
+#map2 {
+    z-index: 1;
     margin: 0 auto;
     width:90%;
-    height: 100%;
+    height: 500px;;
 }
 
 .help-body {
@@ -492,11 +506,22 @@ ul.details-page > * {
     .book-text {
         display: none;
     }
+    #map {
+        width:80%
+    }
+    .form-flex {
+        display: flex;
+        flex-direction: row;
+    }
     
 
 }
 /*tablet*/
 @media screen and (min-width:768px) {
+    .form-flex {
+        display: flex;
+        flex-direction: row;
+    }
 }
 /*mobile text sizes*/
 @media screen and (min-width: 480px) {

@@ -2,23 +2,25 @@
 <%- include ('../partials/navloggedin') -%>
         <div class="library-sort">
             <h6>Filter:</h6>
-            <select id="sort" name="sort">
+            <!-- <select id="sort" name="sort">
                 <option value="date">Date</option>
                 <option value="type">Type</option>
                 <option value="location">Location</option>
                 </optgroup>
-            </select>
+            </select> -->
             <select id="subSort" name="subSort">
                 <option value="season">Season</option>
-                <option value="season">Spring</option>
-                <option value="date">Summer</option>
-                <option value="type">Fall</option>
-                <option value="location">Winter</option>
+                <option value="spring">Spring</option>
+                <option value="summer">Summer</option>
+                <option value="fall">Fall</option>
+                <option value="winter">Winter</option>
             </select>
-            <div class="showAll"><input type="checkbox" id=showall name=showall><label for="showall">Show all</label>
-            </div>
+            <h6><a href="./map_view">Map View</a></h6>
+            <!-- <div class="showAll"><input type="checkbox" id=showall name=showall><label for="showall">Show all</label>
+            </div> -->
         </div>
         <div class="library-container">
+            <div id="map2"></div>
             <div class="observations">
                 <ul>
                     <li> <i class="fas fa-chevron-down"></i></li>
@@ -28,9 +30,9 @@
                     <li>Location: Ames Nowell State Forest</li>
                 </ul>
                 <div class="imgs">
-                <% for (log of data) { %>
-                    <%- include('../partials/logcard', { log: log }) -%>
-                  <% } %>
+                    <% for (log of data) { %>
+                        <%- include('../partials/logcard', { log: log }) -%>
+                        <% } %>
                 </div>
                 <ul>
                     <li> <i class="fas fa-chevron-down"></i></li>
@@ -103,7 +105,41 @@
         }
         
         carrot.addEventListener("click", showHide);
+
+
     </script>
+    <script>
+let map, marker;
+let data = <%- JSON.stringify(data) %>;
+function initMap() {
+    if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition((position) => {
+            // current location of the user
+            currentPosition = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+            } 
+    // Set static latitude, longitude value
+    const latlng = new google.maps.LatLng(currentPosition);
+    // Set map options
+    const myOptions = {
+    zoom: 10,
+    center: latlng
+    }
+    map = new google.maps.Map(
+        document.getElementById('map2'), {zoom: 10, center: latlng});
+    for (log of data) {
+        log.latitude = Number(log.latitude);
+        log.longitude = Number(log.longitude);
+
+        const object = {lat: log.latitude, lng: log.longitude};
+        marker = new google.maps.Marker({position: object, map: map});
+    }
+    })
+}
+}
+    </script>
+    <script src= "<%= mapsAPI %>" async></script>
 </body>
 
 </html>

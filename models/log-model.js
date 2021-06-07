@@ -2,14 +2,16 @@ const mongoose = require('mongoose')
 const { Schema } = mongoose
 
 const logSchema = new Schema ({
-    date: {
-        type: Date,
-        default: Date.now,
+    latitude: {
+        type: Number,
     },
-    id_name: {
-        type: String,
+    longitude: {
+        type: Number,
     },
     location: {
+        type: String,
+    },
+    id_name: {
         type: String,
     },
     classification: {
@@ -29,6 +31,10 @@ const logSchema = new Schema ({
     },
     img4: {
         type: String,
+    },
+    date: {
+        type: Date,
+        default: Date.now,
     },
 })
 

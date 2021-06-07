@@ -51,25 +51,22 @@ function initMap() {
     var latlng = new google.maps.LatLng(currentPosition);
     // Set map options
     var myOptions = {
-    zoom: 20,
+    zoom: 10,
     center: latlng
     }
     // Create map object with options
-    map = new google.maps.Map(document.getElementById("map"), myOptions);
+    map2 = new google.maps.Map(document.getElementById("map2"), myOptions);
     // Create and set the marker
     marker = new google.maps.Marker({
-    map: map,
-    draggable:true,
+    map: map2,
     position: latlng,
     icon: '../../imgs/maps-icons/marker-test-large-vert.png'
     });
-    // Register Custom "dragend" Event
-    google.maps.event.addListener(marker, 'dragend', function() {
-    // Get the Current position, where the pointer was dropped
-    var point = marker.getPosition();
-    console.log(point.lat(), point.lng());
-    // Center the map at given point
-    map.panTo(point);
+  
+    marker = new google.maps.Marker({
+    map: map,
+    position: latlng,
+    icon: '../../imgs/maps-icons/marker-test-large-vert.png'
     });
   })
     }
