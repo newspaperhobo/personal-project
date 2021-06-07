@@ -22,7 +22,5 @@ router.route('/help')
     .get(siteController.help);
 router.route('/resources')
     .get(siteController.resources);
-router.route('/map_view')
-    .get(siteController.map_view_get);
 
 module.exports = router;
