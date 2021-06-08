@@ -52,7 +52,11 @@ module.exports = {
         response.render('pages/about')
     },
     dashboard: (request, response) => {
+      if (request.isAuthenticated()) {
         response.render('pages/dashboard')
+      } else {
+        response.redirect('../login')
+    }
     },
     help: (request, response) => {
         response.render('pages/help')
@@ -60,7 +64,4 @@ module.exports = {
     resources: (request, response) => {
         response.render('pages/resources')
     },
-    map_view_get: (request, response) => {
-        response.render('pages/map-view', { mapsAPI : mapsAPI })
-    }
 }

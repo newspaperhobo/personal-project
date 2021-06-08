@@ -32,33 +32,7 @@
         // }
         
         // carrot.addEventListener("click", showHide);
-
-        let body = document.querySelector("body"); 
-        let icons = document.querySelectorAll("i");
-        let links = document.querySelectorAll("a");
-        let notebook = document.querySelector(".notebook");
-        let nav = document.querySelector(".nav");
-        let filter = document.querySelector(".library-sort");
-        let theme = document.querySelector(".theme")
-        let themes = document.querySelectorAll(".theme")
-        const theme2 = function() {
-            if (body.style.backgroundColor = "var(--secondary-background-color)") {
-            body.style.backgroundColor = "var(--secondary-background-color)"
-            for (let i=0; i < icons.length; i++) {
-            icons[i].style.color = "black";
-            }
-            notebook.style.backgroundImage = "url('/imgs/backgrounds/amanita3.png')";
-            nav.style.backgroundColor = "red";
-            filter.style.backgroundColor = "red";
-            for (let i=0; i < themes.length; i++) {
-                themes[i].style.backgroundColor = "var(--secondary-background-color)"
-                }
-            } else theme1()
-        }
-
-        
-        theme.addEventListener("click", theme2);
-        
+ 
         // const theme1 = function() {
         //     body.style.backgroundColor = "var(--primary-background-color)";
         //     for (let i=0; i < icons.length; i++) {
@@ -69,9 +43,11 @@
         //     filter.style.backgroundColor = "var(----primary-nav-background)";
         //     theme.style.backgroundColor = "var(---primary-button-yellow)"
         // }
-        
+       
+let hasDropdown = document.querySelector(".has-dropdown");
+let dropdown = document.querySelector(".dropdown");
 
-let dateInput = document.getElementById("date");
-let currentDate = new Date().toLocaleDateString("en-US").split("/")
-let formattedDate = `${currentDate[2]}-${currentDate[0]}-${currentDate[1]}`
-dateInput.setAttribute = ("value", formattedDate);
+
+hasDropdown.addEventListener("click", () => {
+    dropdown.classList.toggle("show");
+})

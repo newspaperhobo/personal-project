@@ -2,16 +2,13 @@ const mongoose = require('mongoose')
 const { Schema } = mongoose
 
 const logSchema = new Schema ({
-    latitude: {
-        type: Number,
-    },
-    longitude: {
-        type: Number,
+    coords: {
+        type: Array,
     },
     location: {
         type: String,
     },
-    id_name: {
+    name: {
         type: String,
     },
     classification: {

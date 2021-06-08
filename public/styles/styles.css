@@ -9,6 +9,50 @@
 --secondary-icon-color:black;
 --secondary-link-color:black;
 --secondary-nav-background: red;
+--gray0: #f8f8f8;
+--gray1: #dbe1e8;
+--gray2: #b2becd;
+--gray3: #6c7983;
+--gray4: #454e56;
+--gray5: #2a2e35;
+--gray6: #12181b;
+--blue: #0084a5;
+--purple: #a82dd1;
+--yellow: #fff565;
+--nature1: #a1cca5ff;
+--nature2: #8fb996ff;
+--nature3: #709775ff;
+--nature4: #415d43ff;
+--nature5: #111d13ff;
+}
+
+.light {
+    --bg: var(--gray0);
+    --bg-notebook: var(--gray2);
+    --bg-nav: linear-gradient(to right var(--gray1), var(--gray3));
+    --bg-dropdown: var(--gray0);
+    --text: var(--gray6);
+    --link: var(--gray6);
+    --link-hover: var(--gray4);
+    --border-color: var(--blue);
+}
+
+.dark {
+    --bg: var(--gray5);
+    --bg-nav: linear-gradient(to right var(--gray5), var(--gray6));
+    --bg-notebook: var(--gray4);
+    --bg-dropdown: var(--gray6);
+    --text: var(--gray0);
+    --link: var(--gray0);
+    --link-hover: var(--gray3);
+}
+.nature {
+    --bg: linear-gradient(to right var(--nature1), var(--nature3));
+    --bg-nav: var(--nature6);
+    --bg-notebook: var(--gray4);
+    --bg-dropdown: var(--nature4);
+    --text: var(--gray0);
+    --link: var(--gray0);
 }
 
 @font-face {
@@ -149,15 +193,52 @@ p {
 
 ul li.theme {
     margin: 0.6em auto;
-    margin-bottom: 0.6em;
+    margin-bottom: 0em;
     text-align: center;
     width: 275px;
     font-size: .5em;
     padding: .2em;
+    box-sizing: border-box;
     border: 2px black solid;
     color:black;
     background-color:var(--primary-button-yellow)
 }
+
+.dropdown {
+    width: 275px;
+    padding: .2em;
+    box-sizing: border-box;
+    background:var(--primary-nav-background);
+    color: black;
+    margin: 0 auto;
+    /* opacity: 0; */
+    box-shadow: rgb(2, 8, 20, 0.1) 0px 0.175em 0.5em;
+    
+}
+.dropdown-item {
+    padding: 0.3em;
+    width:100%;
+}
+
+.dropdown-item a {
+    width:100%;
+    height: 100%;
+    size: 0.7rem;
+    padding-left: 10px;
+    font-weight: bold;
+}
+.dropdown-item a::before {
+    content: '';
+    display: inline-block;
+    border: 2px solid white;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    width: 0.3rem;
+    height: 0.3rem;
+    margin-right: 0.5em
+}
+
 ul li.theme-button {
     margin: 0em auto;
     margin-bottom: 0.6em;
@@ -226,7 +307,7 @@ ul.resources {
 
 .notebook p {
     width: 90%;
-    margin: 1em auto;
+    margin: .7em auto;
 }
 
 .login-form {
@@ -458,6 +539,8 @@ ul.details-page > * {
 .logout a:hover {
     color: var(--primary-nav-font-color)
 }
+
+
 
 /* desktop */
 @media screen and (min-width: 1024px) {
