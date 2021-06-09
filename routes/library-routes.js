@@ -10,6 +10,8 @@ router.route("/new-form")
  .get(libraryController.create_log_get);
  router.route("/map_view")
   .get(libraryController.library_map_get);
+router.route("/search")
+  .get(libraryController.search_get);
 router.route("/:id")
  .get(libraryController.id_details_get)
  .post(libraryController.id_details_post);

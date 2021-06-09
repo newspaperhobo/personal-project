@@ -1,14 +1,21 @@
 :root {
     font-size: 2.5rem;
 --secondary-font-family: 'Nunito', sans-serif;
+/**********************/
 --primary-background-color: rgb(228, 148, 0);
---primary-nav-font-color: rgb(209, 66, 248);
+--primary-nav-link-hover-color: rgb(209, 66, 248);
 --primary-nav-background:  rgb(25, 51, 199);
 --primary-button-yellow: rgb(246, 254, 140);
+--primary-notebook-bg: rgb(189, 163, 134);
+--primary-font-color: black;
+--primary-link-color: white;
+--primary-edit-link-color: red;
+/**********************/
 --secondary-background-color: rgb(126, 207, 75);
 --secondary-icon-color:black;
 --secondary-link-color:black;
 --secondary-nav-background: red;
+/**********************/
 --gray0: #f8f8f8;
 --gray1: #dbe1e8;
 --gray2: #b2becd;
@@ -16,20 +23,49 @@
 --gray4: #454e56;
 --gray5: #2a2e35;
 --gray6: #12181b;
+/**********************/
 --blue: #0084a5;
 --purple: #a82dd1;
 --yellow: #fff565;
+/**********************/
 --nature1: #a1cca5ff;
 --nature2: #8fb996ff;
 --nature3: #709775ff;
 --nature4: #415d43ff;
 --nature5: #111d13ff;
+/******* woods and blues *******/
+--indigo-dye: #2b4162ff;
+--deep-space-sparkle: #385f71ff;
+--magnolia: #f5f0f6ff;
+--burlywood: #d7b377ff;
+--french-bistre: #8f754fff;
+/***** saturated primaries *********/
+--international-orange-golden-gate-bridge: #c03221ff;
+--indian-yellow: rgb(227, 151, 37);
+--hunter-green: #495f41ff;
+--white: #ffffffff;
+--indigo-dye: #0c4767ff;
+
+}
+
+.primary {
+    --bg-logout: var(--primary-background-color);
+    --bg-notebook: var(--primary-notebook-bg);
+    --bg-theme-button: var(--primary-button-yellow);
+    --bg-nav: var(--primary-nav-background);
+    --bg-dropdown: var(--primary-nav-background);
+    --text: var(--primary-font-color);
+    --link: var(--primary-link-color);
+    --link-hover: var(--primary-nav-link-hover-color);
+    --edit-link-color: var(--primary-edit-link-color);
+    --details-link-color: var(--primary-font-color);
 }
 
 .light {
-    --bg: var(--gray0);
+    --bg-logout: var(--gray3);
     --bg-notebook: var(--gray2);
-    --bg-nav: linear-gradient(to right var(--gray1), var(--gray3));
+    --bg-theme-button: var(--gray1);
+    --bg-nav: var(--gray1);
     --bg-dropdown: var(--gray0);
     --text: var(--gray6);
     --link: var(--gray6);
@@ -38,21 +74,34 @@
 }
 
 .dark {
-    --bg: var(--gray5);
-    --bg-nav: linear-gradient(to right var(--gray5), var(--gray6));
-    --bg-notebook: var(--gray4);
-    --bg-dropdown: var(--gray6);
+    --bg-logout: var(--gray4);
+    --bg-nav: var(--gray5);
+    --bg-theme-button: var(--gray3);
+    --bg-notebook: var(--gray6);
+    --bg-dropdown: var(--gray5);
     --text: var(--gray0);
     --link: var(--gray0);
     --link-hover: var(--gray3);
 }
 .nature {
-    --bg: linear-gradient(to right var(--nature1), var(--nature3));
-    --bg-nav: var(--nature6);
-    --bg-notebook: var(--gray4);
+    --bg-logout: var(--nature3);
+    --bg-nav: var(--nature4);
+    --bg-notebook: var(--nature5);
     --bg-dropdown: var(--nature4);
-    --text: var(--gray0);
-    --link: var(--gray0);
+    --bg-theme-button: var(--french-bistre);
+    --text: var(--nature1);
+    --link: var(--nature1);
+    --link-hover: var(--nature3)
+}
+.mushroom {
+    --bg-logout: var(--international-orange-golden-gate-bridge);
+    --bg-nav: var(--hunter-green);
+    --bg-notebook: var(--indigo-dye);
+    --bg-theme-button: var(--indian-yellow);
+    --bg-dropdown: var(--international-orange-golden-gate-bridge);
+    --text: var(--white);
+    --link: var(--white);
+    --link-hover: var(var(--indian-yellow));
 }
 
 @font-face {
@@ -66,11 +115,13 @@
 
 body {
     padding-top: 0.1em;
-    background-color: rgb(228, 148, 0);
+    background-color: var(--bg-logout);
+    width:100%;
     font-family: var(--secondary-font-family);
     overflow-x: scroll;
-    /* theme 2 */
-    /* background-color: rgb(126, 207, 75); */
+    color: var(--text);
+    /* transition: background 500ms ease-in-out, color 1000ms ease-in-out
+*/
 }
 
 h3, h6 {
@@ -85,7 +136,7 @@ h2, h4, h6 {
 }
 
 i {
-    color: rgb(209, 66, 248);
+    color: var(--link-hover);
     padding: 0.4em;
     display: block;
     /* theme 2 */
@@ -103,17 +154,17 @@ a {
 }
 
 a:link, a:visited {
-color: white;
+color: var(--link)
 }
 
 a:hover {
-    color:var(--primary-nav-font-color);
+    color:var(--link-hover);
     /* theme 2 */
     /* color: black; */
 }
 
 li.edit a {
-    color: red;
+    color: var(--edit-link-color);
 }
 li.details a {
     font-style: oblique;
@@ -125,7 +176,7 @@ li.details a {
 } */
 
 .individual-card a {
-    color: black;
+    color: var(--text);
 }
 
 ul {
@@ -164,7 +215,7 @@ p {
 .notebook {
     flex-direction: column;
     overflow-x: scroll;
-    background-color: rgb(189, 163, 134);
+    background-color: var(--bg-notebook);
     height: 97vh;
     min-height: 735px;
     max-width: 768px;
@@ -172,7 +223,7 @@ p {
     border: 2px black solid;
     border-bottom-right-radius: 60px;
     border-top-right-radius: 60px;
-    box-shadow: 2px -5px;
+    box-shadow: 2px -5px black;
     /* theme 2 background */
     /* background-image: url('../imgs/backgrounds/amanita3.png'); */
 }
@@ -182,10 +233,9 @@ p {
     position: sticky;
     top:0;
     padding: .8em 0.3em;
-    background-color: rgb(25, 51, 199);
+    background-color: var(--bg-nav);
     border-top-right-radius: 57px;
-    /* theme 2 nav */
-    /* background-color: red; */
+
 }
 .navList {
     display:none;
@@ -200,15 +250,15 @@ ul li.theme {
     padding: .2em;
     box-sizing: border-box;
     border: 2px black solid;
-    color:black;
-    background-color:var(--primary-button-yellow)
+    color:(--text);
+    background-color:var(--bg-theme-button)
 }
 
 .dropdown {
     width: 275px;
     padding: .2em;
     box-sizing: border-box;
-    background:var(--primary-nav-background);
+    background:var(--bg-dropdown);
     color: black;
     margin: 0 auto;
     /* opacity: 0; */
@@ -230,7 +280,7 @@ ul li.theme {
 .dropdown-item a::before {
     content: '';
     display: inline-block;
-    border: 2px solid white;
+    border: 2px solid var(--text);
     border-radius: 50%;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
@@ -248,7 +298,7 @@ ul li.theme-button {
     padding: .2em;
     border: 2px black solid;
     color:black;
-    background-color:var(--primary-button-yellow)
+    background-color:var(--bg-theme-button)
 }
 
 .nav ul {
@@ -259,7 +309,7 @@ ul li.theme-button {
 .nav li {
     font-size: 0.65em;
     align-self: center;
-    color: white;
+    color: var(--text);
 }
 
 .nav-no-bottom-margin {
@@ -332,7 +382,7 @@ ul.resources {
     margin: .5em auto;
     width: 87%;
     padding: 0.2em;
-    background-color: rgb(246, 254, 140);
+    background-color: var(--bg-theme-button);
 }
 
 .maps-placeholder {
@@ -390,7 +440,7 @@ div.library-sort {
     top:123px;
     display: flex;
     justify-content: left;
-    background-color: var(--primary-nav-background);
+    background-color: var(--bg-nav);
     color:white;
     border-top: 10px white solid;
 }
@@ -442,7 +492,7 @@ div.library-sort {
 /* library page option 2 - images hidden */
 
 .observations {
-    background-color: white;;
+    background-color: white;
 }
 .observations ul{
     font-size: 1.3em;
@@ -533,11 +583,11 @@ ul.details-page > * {
 }
 
 .logout {
-    color: var(--primary-background-color);
+    color: var(--bg_logout);
 }
 
 .logout a:hover {
-    color: var(--primary-nav-font-color)
+    color: var(--link-hover)
 }
 
 

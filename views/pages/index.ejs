@@ -16,16 +16,16 @@
                         </ul>
                             <ul class="dropdown hide">
                                 <li class="dropdown-item">
-                                    <a id="light" href="#">Light</a>
+                                    <a id="primary" href="#">Primary</a>
                                 </li>
                                 <li class="dropdown-item">
                                     <a id="dark" href="#">Dark</a>
                                 </li>
                                 <li class="dropdown-item">
-                                    <a id="Nature" href="#">Nature</a>
+                                    <a id="nature" href="#">Nature</a>
                                 </li>
                                 <li class="dropdown-item">
-                                    <a id="Mushroom" href="#">Mushroom</a>
+                                    <a id="mushroom" href="#">Mushroom</a>
                                 </li>
                         </li></ul>
             <div class="right-arrow">
@@ -39,6 +39,50 @@
         hasDropdown.addEventListener("click", () => {
         dropdown.classList.toggle("show");
         })
+        </script>
+        <script>
+            const primaryButton = document.getElementById('primary');
+            const darkButton = document.getElementById('dark');
+            const natureButton = document.getElementById('nature');
+            const mushroomButton = document.getElementById('mushroom');
+            const body = document.body;
+
+            const theme = localStorage.getItem('theme');
+            if (theme) {
+                body.classList.add(theme)
+            }
+
+            
+            primaryButton.addEventListener("click", () => {
+                if (body.classList == 'dark' || body.classList =='nature' || body.classList == 'mushroom') {
+                    body.classList === ""
+                    body.classList.add('primary')
+                    localStorage.setItem('theme', 'primary')
+                }
+})
+            darkButton.addEventListener("click", () => {
+                if (body.classList == 'primary' || body.classList =='nature' || body.classList == 'mushroom') {
+                    body.classList.remove
+                    body.classList.add('dark')
+                    localStorage.setItem('theme', 'dark')
+                } 
+            })
+                
+            natureButton.addEventListener("click", () => {
+                if (body.classList == 'dark' || body.classList =='primary' || body.classList == 'mushroom') {
+                    body.classList === ""
+                    body.classList.add('nature')
+                    localStorage.setItem('theme', 'nature')
+                }
+})
+            mushroomButton.addEventListener("click", () => {
+                if (body.classList == 'dark' || body.classList =='nature' || body.classList == 'primary') {
+                    body.classList === ""
+                    body.classList.add('mushroom')
+                    localStorage.setItem('theme', 'mushroom')
+                } 
+})
+
         </script>
 </body>
 </html>

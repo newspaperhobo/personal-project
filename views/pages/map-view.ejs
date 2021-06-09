@@ -9,9 +9,11 @@
     <script src="https://kit.fontawesome.com/6c117c7d34.js" crossorigin="anonymous"></script>
     <script src="/js/scripts.js" defer></script>
 </head>
-<body>
+<body class="primary">
 <%- include ('../partials/navloggedin') -%>
 <div class="library-sort"><h6>Filter:</h6>
+<form action="/library/search" method="GET">
+<button type="submit">Search</button>
 <select id="subSort" name="subSort">
     <option value="season">Season</option>
     <option value="spring">Spring</option>
@@ -19,6 +21,7 @@
     <option value="fall">Fall</option>
     <option value="winter">Winter</option>
 </select>
+</form>
 <h6><a href="/library">List View</a></h6>
 </div>
         <div id="map2"></div>

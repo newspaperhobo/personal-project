@@ -95,5 +95,29 @@ module.exports = {
             response.redirect('../login')
         }
     },
+    search_get: (request, response) => {
+        const season = request.query;
+        if (request.isAuthenticated()) {
+            if (season === "spring") {
+                // Log.aggregate([
+                //     { "$match" : {$month: "$date"}}
+                // ]
+                // .exec((error, seasonal_Logs)=> {
+                //     console.log(seasonal_Logs);
+                //     // if (error) {
+                //     //     return error
+                //     // } else {
+                //     //     response.render('pages/map-view', { data: all_Logs , mapsAPI: mapsAPI })
+                //     // }
+                // }))
+                Log.find({
+                    date: { $gte: 3, $lte: 5}
+                })
+            }
+        } else {
+            response.redirect('../login')
+        }
+        
+    },
 }
 
