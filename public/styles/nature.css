@@ -45,20 +45,16 @@
 --hunter-green: #495f41ff;
 --white: #ffffffff;
 --indigo-dye: #0c4767ff;
+/****************/
+--bg-logout: #709775ff;
+--bg-nav: #415d43ff;
+--bg-notebook: #111d13ff;
+--bg-dropdown: #415d43ff;
+--bg-theme-button: #8f754fff;
+--text: var(--white);
+--link: var(--nature1);
+--link-hover: #709775ff;
 
-}
-
-.primary {
-    --bg-logout: var(--primary-background-color);
-    --bg-notebook: var(--primary-notebook-bg);
-    --bg-theme-button: var(--primary-button-yellow);
-    --bg-nav: var(--primary-nav-background);
-    --bg-dropdown: var(--primary-nav-background);
-    --text: var(--primary-font-color);
-    --link: var(--primary-link-color);
-    --link-hover: var(--primary-nav-link-hover-color);
-    --edit-link-color: var(--primary-edit-link-color);
-    --details-link-color: var(--primary-font-color);
 }
 
 @font-face {
@@ -191,7 +187,7 @@ p {
 }
 
 .nav {
-    transition: background 500ms ease-in-out, color 100ms ease-in-out;
+    transition: background 500ms ease-in-out, color 1000ms ease-in-out;
     z-index: 2;
     position: sticky;
     top:0;
@@ -207,8 +203,7 @@ p {
 .join {
     text-align: center;
     font-size: 0.7em; 
-    color: var(--primary-nav-background); 
-    margin-bottom: 0.3em"
+    color: var(--primary-nav-background);
 }
 
 a.register {
@@ -224,7 +219,7 @@ ul li.theme {
     padding: .2em;
     box-sizing: border-box;
     border: 2px black solid;
-    color:(--text);
+    color:var(--text);
     background-color:var(--bg-theme-button)
 }
 

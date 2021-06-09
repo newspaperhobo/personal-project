@@ -45,20 +45,15 @@
 --hunter-green: #495f41ff;
 --white: #ffffffff;
 --indigo-dye: #0c4767ff;
-
-}
-
-.primary {
-    --bg-logout: var(--primary-background-color);
-    --bg-notebook: var(--primary-notebook-bg);
-    --bg-theme-button: var(--primary-button-yellow);
-    --bg-nav: var(--primary-nav-background);
-    --bg-dropdown: var(--primary-nav-background);
-    --text: var(--primary-font-color);
-    --link: var(--primary-link-color);
-    --link-hover: var(--primary-nav-link-hover-color);
-    --edit-link-color: var(--primary-edit-link-color);
-    --details-link-color: var(--primary-font-color);
+/**************/
+--bg-logout: #2a2e35;
+--bg-nav: #2a2e35;
+--bg-theme-button: #6c7983;
+--bg-notebook:#12181b;
+--bg-dropdown: #2a2e35;
+--text: #f8f8f8;
+--link: #f8f8f8;
+--link-hover: #6c7983;
 }
 
 @font-face {
@@ -172,7 +167,6 @@ p {
 
 
 .notebook {
-    transition: background 500ms ease-in-out, color 1000ms ease-in-out;
     flex-direction: column;
     overflow-x: scroll;
     background-color: var(--bg-notebook);
@@ -186,19 +180,19 @@ p {
     border-top-right-radius: 60px;
     box-shadow: 2px -5px black;
     box-sizing: border-box;
+    transition: background 500ms ease-in-out, color 1000ms ease-in-out
     /* theme 2 background */
     /* background-image: url('../imgs/backgrounds/amanita3.png'); */
 }
 
 .nav {
-    transition: background 500ms ease-in-out, color 100ms ease-in-out;
     z-index: 2;
     position: sticky;
     top:0;
     padding: .8em 0.3em;
     background-color: var(--bg-nav);
     border-top-right-radius: 57px;
-
+    transition: background 500ms ease-in-out, color 1000ms ease-in-out
 }
 .navList {
     display:none;
@@ -208,7 +202,6 @@ p {
     text-align: center;
     font-size: 0.7em; 
     color: var(--primary-nav-background); 
-    margin-bottom: 0.3em"
 }
 
 a.register {
@@ -279,6 +272,7 @@ a#nature::before{
 a#mushroom::before{
     background-color: var(--international-orange-golden-gate-bridge);
 }
+
 .dropdown-item a:hover::before {
   transform: scale(1.2);
   transition: 0.3s ease-in-out;

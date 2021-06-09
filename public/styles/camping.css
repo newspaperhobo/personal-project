@@ -45,20 +45,16 @@
 --hunter-green: #495f41ff;
 --white: #ffffffff;
 --indigo-dye: #0c4767ff;
+/**********************/
+--bg-logout: var(--international-orange-golden-gate-bridge);
+    --bg-nav: var(--hunter-green);
+    --bg-notebook: var(--indigo-dye);
+    --bg-theme-button: var(--indian-yellow);
+    --bg-dropdown: var(--hunter-green);
+    --text: var(--white);
+    --link: var(--white);
+    --link-hover: var(--indian-yellow);
 
-}
-
-.primary {
-    --bg-logout: var(--primary-background-color);
-    --bg-notebook: var(--primary-notebook-bg);
-    --bg-theme-button: var(--primary-button-yellow);
-    --bg-nav: var(--primary-nav-background);
-    --bg-dropdown: var(--primary-nav-background);
-    --text: var(--primary-font-color);
-    --link: var(--primary-link-color);
-    --link-hover: var(--primary-nav-link-hover-color);
-    --edit-link-color: var(--primary-edit-link-color);
-    --details-link-color: var(--primary-font-color);
 }
 
 @font-face {
@@ -80,8 +76,8 @@ body {
 }
 
 h2 {
-    font-size: 1rem;
-    }
+font-size: 1rem;
+}
 
 h3, h6 {
     margin:0.3em;
@@ -130,10 +126,6 @@ li.details a {
     text-decoration: underline;
 }
 
-/*li.edit a:hover {
-    color: var(--primary-nav-font-color);
-} */
-
 .individual-card a {
     color: var(--text);
 }
@@ -172,15 +164,14 @@ p {
 
 
 .notebook {
-    transition: background 500ms ease-in-out, color 1000ms ease-in-out;
     flex-direction: column;
     overflow-x: scroll;
     background-color: var(--bg-notebook);
     height: 97vh;
     min-height: 735px;
     max-width: 768px;
-    padding-bottom: 1em;
     margin: 0 auto;
+    padding-bottom: 1em;
     border: 2px black solid;
     border-bottom-right-radius: 60px;
     border-top-right-radius: 60px;
@@ -191,7 +182,6 @@ p {
 }
 
 .nav {
-    transition: background 500ms ease-in-out, color 100ms ease-in-out;
     z-index: 2;
     position: sticky;
     top:0;
@@ -207,8 +197,7 @@ p {
 .join {
     text-align: center;
     font-size: 0.7em; 
-    color: var(--primary-nav-background); 
-    margin-bottom: 0.3em"
+    color: #d7b377ff;
 }
 
 a.register {
@@ -224,7 +213,7 @@ ul li.theme {
     padding: .2em;
     box-sizing: border-box;
     border: 2px black solid;
-    color:(--text);
+    color:var(--text);
     background-color:var(--bg-theme-button)
 }
 

@@ -7,32 +7,42 @@
 <div class= "main">
     <h2>FIELD NOTES</h2>
     <% if (!user) { %>
-                <p style="text-align: center">Are you interested in foraging and finding edible plants? <p style="text-align: center;">Want to digitally track your natural surroundings in a personalized space?</p><p style="text-align: center; font-size: 0.7em; color: blue; margin-bottom: 0.3em">Join Field Notes and:</p>
+                <p style="text-align: center">Are you interested in foraging and finding edible plants? <p style="text-align: center; margin-bottom: 1.5em">Want to digitally track your natural surroundings in a personalized space?</p><p class="join">Join Field Notes and:</p>
                     <h3 class="index-desktop-h5">
-                        <a href="/register">Start logging!</a></h3>
+                        <a href="/register" class="register">Start logging!</a></h3>
                         <% } %>
                         <p style="text-align: center; margin: 0.3 em auto">Make this space yours: </p>
                         <ul><li class="theme has-dropdown">Pick Your Theme
                         </ul>
                             <ul class="dropdown hide">
-                                <li class="dropdown-item">
-                                    <a id="primary" href="#">Primary</a>
+                                <div class="theme-switches"></div>
+                                <li class="dropdown-item dropdown-item-before-1">
+                                    <div data-theme="primary" class="switch" id="switch-1">
+                                        <a id="primary" href="#" value="primary">Primary</a>
+                                    </div>
                                 </li>
-                                <li class="dropdown-item">
-                                    <a id="dark" href="#">Dark</a>
+                                <li class="dropdown-item dropdown-item-before-2">
+                                    <div data-theme="dark" class="switch" id="switch-2">
+                                        <a id="dark" href="#" value="dark">Dark</a>
+                                    </div>
                                 </li>
-                                <li class="dropdown-item">
-                                    <a id="nature" href="#">Nature</a>
+                                <li class="dropdown-item dropdown-item-before-3">
+                                    <div data-theme="nature" class="switch" id="switch-3">
+                                        <a id="nature" href="#" value="nature">Green Machine</a>
+                                    </div>
                                 </li>
-                                <li class="dropdown-item">
-                                    <a id="mushroom" href="#">Mushroom</a>
+                                <li class="dropdown-item dropdown-item-before-4">
+                                    <div data-theme="camping" class="switch" id="switch-4">
+                                        <a id="mushroom" href="#" value="camping">Camping</a>
+                                    </div>
                                 </li>
+                            </div>
                         </li></ul>
             <div class="right-arrow">
             </div>
         </div>
         </div>
-        <script>
+        <!-- <script>
         let hasDropdown = document.querySelector(".has-dropdown");
         let dropdown = document.querySelector(".dropdown");
         
@@ -54,15 +64,15 @@
 
             
             primaryButton.addEventListener("click", () => {
-                if (body.classList == 'dark' || body.classList =='nature' || body.classList == 'mushroom') {
-                    body.classList === ""
+                if (body.classList === 'dark' || body.classList ==='nature' || body.classList === 'mushroom') {
+                    body.classList.remove("dark", "")
                     body.classList.add('primary')
                     localStorage.setItem('theme', 'primary')
                 }
 })
             darkButton.addEventListener("click", () => {
                 if (body.classList == 'primary' || body.classList =='nature' || body.classList == 'mushroom') {
-                    body.classList.remove
+                    body.classList.remove("primary", "nature", "mushroom")
                     body.classList.add('dark')
                     localStorage.setItem('theme', 'dark')
                 } 
@@ -83,6 +93,6 @@
                 } 
 })
 
-        </script>
+        </script> -->
 </body>
 </html>
