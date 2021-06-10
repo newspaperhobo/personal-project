@@ -537,15 +537,20 @@ div.library-sort {
     padding: 0.2em;
     margin: 0.15em 0em;
     display: flex;
-    justify-content: space-between;
-    background-color: var(--gray3)
+    background-color: var(--gray3);
 }
 .observations li{
-    font-size: 0.3em;
-    align-self: center;  
+    font-size: 0.3em; 
+    align-self: center; 
+    flex: 1;
+    width:10%;
 }
 .observations i{
     font-size: 1.5em;
+}
+
+.fas-fa-grip-lines-vertical {
+    justify-content: center;
 }
 
 #map {

@@ -21,10 +21,12 @@
         </div>
         <div class="library-container">
             <div class="observations">
-                <% for (let i=0; i < data.length; i++) { %>
-                    <% firstDate = data[0].date %>
-                  <%  console.log(data[i].date) %>
-                        <!-- <%- include('../partials/logentry', { log: log }) -%>  -->
+                <% for (let i=0, j=1; i < data.length, j < data.length; i++, j++) { %>
+                    <% let dataI = data[i].date.toLocaleDateString() %>
+                    <% let dataJ = data[j].date.toLocaleDateString() %>
+                    <% if (dataI != dataJ) { %>
+                        <%- include('../partials/logentry', { log: data[i] }) -%>
+                    <% } %> 
                     <% } %> 
                 <ul>
                     <li> <i class="fas fa-chevron-down"></i></li>
@@ -34,9 +36,6 @@
                     <li>Location: Ames Nowell State Forest</li>
                 </ul>
                 <div class="imgs">
-                    <% for (log of data) { %>
-                        <%- include('../partials/logcard', { log: log }) -%>
-                        <% } %>
                 </div>
                 <ul>
                     <li> <i class="fas fa-chevron-down"></i></li>
