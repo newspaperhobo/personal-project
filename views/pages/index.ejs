@@ -7,7 +7,7 @@
 <div class= "main">
     <h2>FIELD NOTES</h2>
     <% if (!user) { %>
-                <p style="text-align: center">Are you interested in foraging and finding edible plants? <p style="text-align: center;">Want to digitally track your natural surroundings in a personalized space?</p><p style="text-align: center; font-size: 0.7em; color: blue; margin-bottom: 0.3em">Join Field Notes and:</p>
+                <p style="text-align: center">Are you interested in foraging and finding edible plants? <p style="text-align: center;">Want to digitally track your natural surroundings in a personalized space?</p><p class="join">Join Field Notes and:</p>
                     <h3 class="index-desktop-h5">
                         <a href="/register">Start logging!</a></h3>
                         <% } %>
@@ -16,73 +16,22 @@
                         </ul>
                             <ul class="dropdown hide">
                                 <li class="dropdown-item">
-                                    <a id="primary" href="#">Primary</a>
+                                    <a id="primary" href="#theme">Primary</a>
                                 </li>
                                 <li class="dropdown-item">
-                                    <a id="dark" href="#">Dark</a>
+                                    <a id="dark" href="#theme">Dark</a>
                                 </li>
                                 <li class="dropdown-item">
-                                    <a id="nature" href="#">Nature</a>
+                                    <a id="nature" href="#theme">Green Machine</a>
                                 </li>
                                 <li class="dropdown-item">
-                                    <a id="mushroom" href="#">Mushroom</a>
+                                    <a id="mushroom" href="#theme">Camping</a>
                                 </li>
                         </li></ul>
             <div class="right-arrow">
             </div>
         </div>
-        </div>
-        <script>
-        let hasDropdown = document.querySelector(".has-dropdown");
-        let dropdown = document.querySelector(".dropdown");
+    </div>
         
-        hasDropdown.addEventListener("click", () => {
-        dropdown.classList.toggle("show");
-        })
-        </script>
-        <script>
-            const primaryButton = document.getElementById('primary');
-            const darkButton = document.getElementById('dark');
-            const natureButton = document.getElementById('nature');
-            const mushroomButton = document.getElementById('mushroom');
-            const body = document.body;
-
-            const theme = localStorage.getItem('theme');
-            if (theme) {
-                body.classList.add(theme)
-            }
-
-            
-            primaryButton.addEventListener("click", () => {
-                if (body.classList == 'dark' || body.classList =='nature' || body.classList == 'mushroom') {
-                    body.classList === ""
-                    body.classList.add('primary')
-                    localStorage.setItem('theme', 'primary')
-                }
-})
-            darkButton.addEventListener("click", () => {
-                if (body.classList == 'primary' || body.classList =='nature' || body.classList == 'mushroom') {
-                    body.classList.remove
-                    body.classList.add('dark')
-                    localStorage.setItem('theme', 'dark')
-                } 
-            })
-                
-            natureButton.addEventListener("click", () => {
-                if (body.classList == 'dark' || body.classList =='primary' || body.classList == 'mushroom') {
-                    body.classList === ""
-                    body.classList.add('nature')
-                    localStorage.setItem('theme', 'nature')
-                }
-})
-            mushroomButton.addEventListener("click", () => {
-                if (body.classList == 'dark' || body.classList =='nature' || body.classList == 'primary') {
-                    body.classList === ""
-                    body.classList.add('mushroom')
-                    localStorage.setItem('theme', 'mushroom')
-                } 
-})
-
-        </script>
 </body>
 </html>

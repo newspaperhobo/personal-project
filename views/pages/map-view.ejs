@@ -15,7 +15,7 @@
 <form action="/library/search" method="GET">
 <button type="submit">Search</button>
 <select id="subSort" name="subSort">
-    <option value="season">Season</option>
+    <option value="season">All</option>
     <option value="spring">Spring</option>
     <option value="summer">Summer</option>
     <option value="fall">Fall</option>
@@ -30,6 +30,7 @@
         <script>
             let locations = []
             let data = <%- JSON.stringify(data) %>;
+            console.log(data)
 
         function initMap() {
             if (navigator.geolocation) {
@@ -45,7 +46,7 @@
         
         const myOptions = {
             center: userCurrentlatlng,
-            zoom: 7.5,
+            zoom: 7,
             streetViewControl: false,
             mapTypeControl: false,
           };
@@ -84,7 +85,7 @@
         let date = `${month}/${day}/${year}`
       
       let content = 
-      `<h4>Name: ${data[i].name}</h4><h4>Date: ${date} </h4><h4><a style="color: black; text-decoration: underline" href="/library/${data[i]._id}">Details</a></h4>`
+      `<h4 class="infowindow">Name: ${data[i].name}</h4><h4 class="infowindow">Date: ${date} </h4><h4 class="infowindow"><a style="color: black; text-decoration: underline" href="/library/${data[i]._id}">Details</a></h4>`
     
     
         const infowindow = new google.maps.InfoWindow()

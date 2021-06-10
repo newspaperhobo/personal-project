@@ -21,6 +21,11 @@
         </div>
         <div class="library-container">
             <div class="observations">
+                <% for (let i=0; i < data.length; i++) { %>
+                    <% firstDate = data[0].date %>
+                  <%  console.log(data[i].date) %>
+                        <!-- <%- include('../partials/logentry', { log: log }) -%>  -->
+                    <% } %> 
                 <ul>
                     <li> <i class="fas fa-chevron-down"></i></li>
                     <li>Date: 4/19/2021 </li>
@@ -107,7 +112,6 @@
 
 
     </script>
-    <script src= "<%= mapsAPI %>" async></script>
 </body>
 
 </html>

@@ -1,44 +1,80 @@
-<%- include ('../partials/head') -%>
-<%- include ('../partials/navloggedin') -%>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Field Notes</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+    <script src="https://kit.fontawesome.com/6c117c7d34.js" crossorigin="anonymous"></script>
+    <script src="/js/scripts.js" defer></script>
+    <script src="/js/maps-create.js" defer></script>
+</head>
+
+<body class="primary">
+    <%- include ('../partials/navloggedin') -%>
         <div class="more-info-body">
-            <h6>The best identifications include lots of details. <h6>Try and fill out as much infomation as you can!
-                </h6>
-            </h6>
-            <h6 class="help-link"><a href="help.html">What do I log?</a></h6>
-            <form>
-                <div class="form-line">
-                    <label for="userDate">Date</label>
-                    <input type="date" id="userDate" name="userDate">
-                </div>
-                <div class="form-line">
-                    <label for="name">ID Name</label>
-                    <input type="text" id="name" name="name">
+            <form action="/library/<%= foundLog._id %>?_method=PUT" method="POST">
+                <div id="map"></div>
+                <div class="form-line form-flex">
+                    <label for="lat">Latitude</label>
+                    <input type="text" id="lat" name="coords" placeholder="Latitude" value="<%= foundLog.coords[0] %>">
+                    <label for="lng">Longitude</label>
+                    <input type="text" id="lng" name="coords" placeholder="Longitude" value="<%= foundLog.coords[1] %>">
                 </div>
                 <div class="form-line">
                     <label for="location">Location</label>
-                    <input type="text" id="location" name="location">
+                    <input type="text" id="location" name="location" placeholder="The park or area you're exploring!"
+                         value="<%= foundLog.location %>">
+                </div>
+                <div class="form-line">
+                    <label for="date">Date</label>
+                    <input type="text" id="date" name="date" placeholder="Date" value="<%= foundLog.date.toLocaleDateString() %>">
+                </div>
+                <div class="form-line">
+                    <label for="name">ID Name</label>
+                    <input type="text" id="name" name="name" placeholder="What did you find?" value="<%= foundLog.name %>">
                 </div>
                 <div class="form-line">
                     <label for="type">Type:</label>
-                    <input type="radio" id="mushroom" name="type"><label for="mushroom">Mushroom</label>
-                    <input type="radio" id="plant" name="type"><label for="plant">Plant</label>
-                    <input type="radio" id="tree" name="type"><label for="tree">Tree</label>
-                </div>
+                    <input type="radio" id="classification" name="classification" value="Mushroom"   
+                    <%if (foundLog.classification === "Mushroom"){%>
+                        <%="checked"%>
+                    <%}%>
+                ><label
+                        for="mushroom">Mushroom</label>
+                    <input type="radio" id="classification" name="classification" value="Plant" <%if (foundLog.classification === "Plant"){%>
+                        <%="checked"%>
+                    <%}%>><label for="plant">Plant</label>
+                    </div>
+                    <div class="form-line">
+                        <label for="type">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <input type="radio" id="classification" name="classification" value="Flower" <%if (foundLog.classification === "Flower"){%>
+                        <%="checked"%>
+                    <%}%>><label for="flower">Flower</label>
+                    <input type="radio" id="classification" name="classification" value="Tree" <%if (foundLog.classification === "Tree"){%>
+                        <%="checked"%>
+                    <%}%>><label for="tree">Tree</label>
+                    </div>
                 <div class="form-line">
                     <label for="notes">Notes</label>
-                <textarea></textarea>
+                    <textarea name="notes" placeholder="Tell us more about your cool find!"><%= foundLog.notes %></textarea>
                 </div>
                 <div class="form-line">
                     <label for="photo">Photos</label>
-                    <input type="file" id="userPhoto" class="userPhoto">
-                    <input type="file" id="userPhoto" class="userPhoto">
+                    <input type="file" id="userPhoto" class="userPhoto" name="img1" src="<%= foundLog.img1 %>">
+                    <input type="file" id="userPhoto" class="userPhoto" name="img2" value="<%= foundLog.img2 %>">
                 </div>
                 <div class="form-line">
                     <label for="photo">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                    <input type="file" id="userPhoto" class="userPhoto">
-                    <input type="file" id="userPhoto" class="userPhoto">
+                    <input type="file" id="userPhoto" class="userPhoto" name="img3" src="<%= foundLog.img3 %>">
+                    <input type="file" id="userPhoto" class="userPhoto" name="img4" value="<%= foundLog.img4 %>">
                 </div>
+                <button>Submit</button></a>
             </form>
-        <a href="/library"><button href="">Submit</button></a>
         </div>
-        <%- include ('../partials/footer') -%>
+        </div>
+        <script src="<%= mapsAPI %>" async></script>
+</body>
+</html>

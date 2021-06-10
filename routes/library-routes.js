@@ -14,8 +14,10 @@ router.route("/search")
   .get(libraryController.search_get);
 router.route("/:id")
  .get(libraryController.id_details_get)
- .post(libraryController.id_details_post);
-router.route("/:id/update")
+ .post(libraryController.id_details_post)
+ .put(libraryController.id_details_put)
+ .delete(libraryController.id_details_delete);
+router.route("/edit/:id")
  .get(libraryController.update_log_get);
  
 module.exports = router;

@@ -1,12 +1,12 @@
 <div class="individual-card hide">
-    <div class="individual-card-img" style="background-image:url(imgs/library/<%= log.img1 %>);">
+    <div class="individual-card-img" style="background-image:url(imgs/library/<%= log.img1 %>); background-size: cover; background-repeat: no-repeat">
     <!-- <img src="imgs/library/<%= log.img1 %>"> -->
         </div>
         <ul>
-
-            <li>Name: <%= log.id_name %></li>
+            <li>Name: <%= log.name %></li>
             <li>Type: <%= log.classification %></li>
             <li class="details"><a href="library/<%= log._id %>">Details</a></li>
-            <li class="edit"><a href="/edit/<%= log._id %>">Edit</a></li>
+            <li class="edit"><a href="library/edit/<%= log._id %>">Edit</a></li>
+            <form action="/library/<%= log._id %>?_method=DELETE" method="POST"><button class="delete">Delete</button></form>
         </ul>
     </div>

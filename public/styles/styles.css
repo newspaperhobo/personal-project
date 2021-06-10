@@ -9,7 +9,7 @@
 --primary-notebook-bg: rgb(189, 163, 134);
 --primary-font-color: black;
 --primary-link-color: white;
---primary-edit-link-color: red;
+--primary-delete-link-color: red;
 /**********************/
 --secondary-background-color: rgb(126, 207, 75);
 --secondary-icon-color:black;
@@ -71,6 +71,7 @@
     --link: var(--gray6);
     --link-hover: var(--gray4);
     --border-color: var(--blue);
+    --join-link: var(--primary-nav-background)
 }
 
 .dark {
@@ -80,8 +81,9 @@
     --bg-notebook: var(--gray6);
     --bg-dropdown: var(--gray5);
     --text: var(--gray0);
-    --link: var(--gray0);
+    --link: var(--gray2);
     --link-hover: var(--gray3);
+    --join-link: var(--primary-nav-background)
 }
 .nature {
     --bg-logout: var(--nature3);
@@ -89,9 +91,10 @@
     --bg-notebook: var(--nature5);
     --bg-dropdown: var(--nature4);
     --bg-theme-button: var(--french-bistre);
-    --text: var(--nature1);
+    --text: var(--white);
     --link: var(--nature1);
-    --link-hover: var(--nature3)
+    --link-hover: var(--nature3);
+    --join-link: var(--burlywood)
 }
 .mushroom {
     --bg-logout: var(--international-orange-golden-gate-bridge);
@@ -101,7 +104,8 @@
     --bg-dropdown: var(--international-orange-golden-gate-bridge);
     --text: var(--white);
     --link: var(--white);
-    --link-hover: var(var(--indian-yellow));
+    --link-hover: var(--indian-yellow);
+    --join-link: var(--burlywood);
 }
 
 @font-face {
@@ -114,14 +118,12 @@
 }
 
 body {
+    transition: color 300ms ease-in-out;
     padding-top: 0.1em;
     background-color: var(--bg-logout);
-    width:100%;
     font-family: var(--secondary-font-family);
     overflow-x: scroll;
     color: var(--text);
-    /* transition: background 500ms ease-in-out, color 1000ms ease-in-out
-*/
 }
 
 h3, h6 {
@@ -163,8 +165,13 @@ a:hover {
     /* color: black; */
 }
 
+button.delete {
+    color: var(--primary-delete-link-color);
+    font-size: .45rem;
+}
+
 li.edit a {
-    color: var(--edit-link-color);
+    color: var(--primary-nav-background);
 }
 li.details a {
     font-style: oblique;
@@ -220,10 +227,12 @@ p {
     min-height: 735px;
     max-width: 768px;
     margin: 0 auto;
+    padding-bottom: 1em;
     border: 2px black solid;
     border-bottom-right-radius: 60px;
     border-top-right-radius: 60px;
     box-shadow: 2px -5px black;
+    box-sizing: border-box;
     /* theme 2 background */
     /* background-image: url('../imgs/backgrounds/amanita3.png'); */
 }
@@ -287,6 +296,35 @@ ul li.theme {
     width: 0.3rem;
     height: 0.3rem;
     margin-right: 0.5em
+}
+
+a#primary::before{
+    background-color: var(--primary-notebook-bg);
+}
+a#dark::before{
+    background-color: var(--gray5);
+}
+a#nature::before{
+    background-color: var(--nature2);
+}
+a#mushroom::before{
+    background-color: var(--international-orange-golden-gate-bridge);
+}
+
+.dropdown-item a:hover::before {
+    transform: scale(1.4);
+    transition: 0.3s ease-in-out;
+  }
+
+  .join {
+    text-align: center;
+    font-size: 0.7em; 
+    color: var(--join-link); 
+    margin-bottom: 0.3em
+}
+
+a.register {
+    font-size: 1rem;
 }
 
 ul li.theme-button {
@@ -500,7 +538,7 @@ div.library-sort {
     margin: 0.15em 0em;
     display: flex;
     justify-content: space-between;
-    background-color: lightgray;
+    background-color: var(--gray3)
 }
 .observations li{
     font-size: 0.3em;
@@ -522,6 +560,10 @@ div.library-sort {
     margin: 0 auto;
     width:90%;
     height: 500px;;
+}
+
+.infowindow {
+    color: black
 }
 
 .help-body {
@@ -547,11 +589,11 @@ div.library-sort {
     width: 280px;
     border: 1px solid black;
     text-align: center;
-    background-color: lightgray;
+    background-color: var(--french-bistre);
 }
 
 .individual-card ul {
-    background-color: lightgray;
+    background-color: var(--french-bistre);
     flex-direction: column;
 }
 .individual-card li {

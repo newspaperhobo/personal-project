@@ -4,11 +4,13 @@
             <ul class="details-page">
                 <li><img src="../imgs/library/<%= log.img1 %>" class="log-details-img"></li>
                 <li><span class="blue">Date:</span>&nbsp;<%= log.date.toLocaleDateString() %></li>
-                <li><span class="blue">ID Name:</span>&nbsp;<%= log.id_name %></li>
+                <li><span class="blue">ID Name:</span>&nbsp;<%= log.name %></li>
                 <li><span class="blue">Location:</span>&nbsp;<%= log.location %></li>
                 <li><span class="blue">Classification:</span>&nbsp;<%= log.classification %></li>
                 <li><span class="blue">Notes:</span>&nbsp;<%= log.notes %></li>
                 <li><span class="blue">More photos:</span>&nbsp;<%= log.img2 %> <%= log.img3 %> <%= log.img4 %></li>
             </ul>
+            <button><a href="./edit/<%= log._id %>"><button>EDIT</button></a>
+    <form action="./books/<%= log._id %>?_method=DELETE" method="POST"><button>DELETE</button>
         </div>
 <%- include ('../partials/footer') -%>
