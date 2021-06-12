@@ -1,6 +1,7 @@
 const { request, response } = require('express');
 const passport = require('passport');
 const User = require('../models/user-model');
+const Log = require('../models/log-model');
 const mapsAPI = process.env.MAPS_URL
 
 module.exports = {
@@ -49,7 +50,7 @@ module.exports = {
         });
       },
     about: (request, response) => {
-        response.render('pages/about')
+        response.render('pages/about', { user: request.user })
     },
     dashboard: (request, response) => {
       if (request.isAuthenticated()) {
@@ -64,4 +65,19 @@ module.exports = {
     resources: (request, response) => {
         response.render('pages/resources')
     },
+    library_map_get: (request, response) => {
+      // if (request.isAuthenticated()) {
+          let query;
+          Log.find({}, (error, all_Logs) => {
+              if (error) {
+                  return error
+              } else {
+                  response.render('pages/map-view', { data: all_Logs , mapsAPI: mapsAPI, query: query})
+              }
+          })
+
+      // } else {
+      //     response.redirect('../login')
+      // }
+  },
 }

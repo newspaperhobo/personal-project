@@ -1,3 +1,13 @@
 <%- include ('../partials/head') -%>
-<%- include ('../partials/navpublic') -%>
+<% if (user) { %>
+    <%- include ('../partials/navloggedin') -%>
+    <% } else { %>
+    <%- include ('../partials/navpublic') -%>
+    <% } %>
+    <div class="about-container">
+    <h2 class="center underline">About</h2>
+    <div class="about-icon-container center"><a href="https://github.com/newspaperhobo"><i class="fab fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/kiraenovak/"><i class="fab fa-linkedin"></i></a>
+    <a href="mailto:kiranovak@gmail.com"><i class="fas fa-envelope"></i></a></div>
+    <p>Created by Kira Novak as a project for <a href="http://www.codesquad.org"><span class="link-highlight">CodeSquad</span></a>, this website is a resource to empower people to learn and interact with their natural surroundings.</p><p>I personally find foraging to be a never ending scavenger hunt. It motivates me to explore, understand how our ecosystem works, and ultimately learn how to better protect it.</p><p>With knowledge of the bounty that the planet can provide, it's important to forage with care- always understand what you're gathering and how to collect sustainably. Never take more than you can eat and leave some for the next explorer.</p></div>
 <%- include ('../partials/footer') -%>

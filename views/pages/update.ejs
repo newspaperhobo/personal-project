@@ -9,17 +9,19 @@
     <link rel="stylesheet" href="/styles/styles.css">
     <script src="https://kit.fontawesome.com/6c117c7d34.js" crossorigin="anonymous"></script>
     <script src="/js/scripts.js" defer></script>
-    <script src="/js/maps-create.js" defer></script>
 </head>
 
 <body class="primary">
     <%- include ('../partials/navloggedin') -%>
         <div class="more-info-body">
+            <h2 class="center underline">Update</h2>
             <form action="/library/<%= foundLog._id %>?_method=PUT" method="POST">
                 <div id="map"></div>
                 <div class="form-line form-flex">
                     <label for="lat">Latitude</label>
                     <input type="text" id="lat" name="coords" placeholder="Latitude" value="<%= foundLog.coords[0] %>">
+                    </div>
+                    <div class="form-line form-flex">
                     <label for="lng">Longitude</label>
                     <input type="text" id="lng" name="coords" placeholder="Longitude" value="<%= foundLog.coords[1] %>">
                 </div>
@@ -49,7 +51,7 @@
                     <%}%>><label for="plant">Plant</label>
                     </div>
                     <div class="form-line">
-                        <label for="type">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <label for="type"></label>
                     <input type="radio" id="classification" name="classification" value="Flower" <%if (foundLog.classification === "Flower"){%>
                         <%="checked"%>
                     <%}%>><label for="flower">Flower</label>
@@ -76,5 +78,56 @@
         </div>
         </div>
         <script src="<%= mapsAPI %>" async></script>
+        <script>
+            let map, marker, currentPosition;
+            let foundLog = <%- JSON.stringify(foundLog) %>;
+            let lat = Number(foundLog.coords[0])
+            let lng = Number(foundLog.coords[1])
+            console.log(foundLog.coords[0])
+
+function initMap() {
+            // Set static latitude, longitude value
+            latlng = new google.maps.LatLng(lat, lng);
+            // render initial lat/lng value from currentlocation
+            function setLatLng(lat, lng) {
+                document.getElementById("lat").setAttribute('value', lat);
+                document.getElementById("lng").setAttribute('value', lng);
+            }
+            // render initial lat/lng value from currentlocation in DOM
+            setLatLng(lat, lng);
+
+            // Set map options
+            var myOptions = {
+                zoom: 12,
+                center: latlng,
+                streetViewControl: false,
+                mapTypeControl: false,
+            }
+            // Create map object with options
+            map = new google.maps.Map(document.getElementById("map"), myOptions);
+            // Create and set the marker
+            marker = new google.maps.Marker({
+                map: map,
+                draggable: true,
+                position: latlng,
+                // icon: '../../imgs/maps-icons/marker-test-large-vert.png',
+            });
+            // save marker current position in individual variables
+
+            // Register Custom "dragend" Event
+            google.maps.event.addListener(marker, 'dragend', function () {
+                // Get the Current position, where the pointer was dropped
+                var point = marker.getPosition()
+                var lat = marker.getPosition().lat();
+                var lng = marker.getPosition().lng();
+                // render value of dragged lat in DOM
+                document.getElementById("lat").setAttribute('value', lat);
+                // render value of dragged lng in DOM
+                document.getElementById("lng").setAttribute('value', lng);
+                // Center the map at given point
+                map.panTo(point);
+            });
+}
+        </script>
 </body>
 </html>

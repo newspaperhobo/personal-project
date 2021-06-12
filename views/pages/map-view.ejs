@@ -12,17 +12,28 @@
 <body class="primary">
 <%- include ('../partials/navloggedin') -%>
 <div class="library-sort"><h6>Filter:</h6>
-<form action="/library/search" method="GET">
-<button type="submit">Search</button>
+<form action="/library/map_search" method="GET">
 <select id="subSort" name="subSort">
-    <option value="season">All</option>
-    <option value="spring">Spring</option>
-    <option value="summer">Summer</option>
-    <option value="fall">Fall</option>
-    <option value="winter">Winter</option>
+    <% console.log(query) %>
+    <option value="all" <%if (query === "all"){%>
+        <%="selected"%>
+    <%}%>>All</option>
+    <option value="spring" <%if (query === "spring"){%>
+        <%="selected"%>
+    <%}%>>Spring</option>
+    <option value="summer" <%if (query === "summer"){%>
+        <%="selected"%>
+    <%}%>>Summer</option>
+    <option value="fall" <%if (query === "fall"){%>
+        <%="selected"%>
+    <%}%>>Fall</option>
+    <option value="winter" <%if (query === "winter"){%>
+        <%="selected"%>
+    <%}%>>Winter</option>
 </select>
+<button type="submit">Search</button>
 </form>
-<h6><a href="/library">List View</a></h6>
+<h6 class="flex-right"><a href="/library"><span class="link-highlight">List View</span></a></h6>
 </div>
         <div id="map2"></div>
 <script src="<%= mapsAPI %>" async ></script>
@@ -85,7 +96,7 @@
         let date = `${month}/${day}/${year}`
       
       let content = 
-      `<h4 class="infowindow">Name: ${data[i].name}</h4><h4 class="infowindow">Date: ${date} </h4><h4 class="infowindow"><a style="color: black; text-decoration: underline" href="/library/${data[i]._id}">Details</a></h4>`
+      `<h4 class="infowindow center">Name: ${data[i].name}</h4><h4 class="infowindow center">Date: ${date} </h4><h4 class="infowindow center"><a style="color: black; text-decoration: underline" href="/library/${data[i]._id}">Details</a></h4>`
     
     
         const infowindow = new google.maps.InfoWindow()

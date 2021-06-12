@@ -4,17 +4,89 @@ const mapsAPI = process.env.MAPS_URL
 
 module.exports = {
     library_get: (request, response) => {
+        let query;
         if (request.isAuthenticated()) {
             Log.find({}).sort({ date: 1 }).exec(function(error, all_Logs) {
                 if (error) {
                     return error
                 } else {
-                    response.render('pages/library', { data: all_Logs , mapsAPI: mapsAPI })
+                    response.render('pages/library', { data: all_Logs , mapsAPI: mapsAPI, query: query })
                 }
             });
         } else {
             response.redirect('../login')
         }
+    },
+    library_search_get: (request, response) => {
+        if (request.isAuthenticated()) {
+            const query = request.query;
+            const season = query.subSort;
+                if (season === "spring") {
+                    Log.aggregate().project({
+                        name: 1,
+                        coords: 1,
+                        date: 1,
+                        month: {
+                            $month: "$date"
+                        }
+                    }).match({
+                        month: { $gte: 3, $lte: 5 }
+                    }).exec(function(err, result) {
+                        response.render('pages/library', { data: result, query: season })
+                    });          
+        } else if (season === "summer") {
+            Log.aggregate().project({
+                name: 1,
+                coords: 1,
+                date: 1,
+                month: {
+                    $month: "$date"
+                }
+            }).match({
+                month: { $gte: 6, $lte: 8  }
+            }).exec(function(err, result) {
+                response.render('pages/library', { data: result , query: season })
+            });          
+    } else if (season === "fall") {
+        Log.aggregate().project({
+            name: 1,
+            coords: 1,
+            date: 1,
+            month: {
+                $month: "$date"
+            }
+        }).match({
+            month: { $gte: 9, $lte: 11 }
+        }).exec(function(err, result) {
+            response.render('pages/library', { data: result , mapsAPI: mapsAPI, query: season })
+        });          
+    } else if (season === "winter") {
+        Log.aggregate().project({
+            name: 1,
+            coords: 1,
+            date: 1,
+            month: {
+                $month: "$date"
+            }
+        }).match({
+            $or: [{ month: 12}, {month: {$gte: 1, $lte: 2} }]
+        }).exec(function(err, result) {
+            response.render('pages/library', { data: result, query: season })
+        });          
+    } else if (season === "all") {
+        Log.find({}).sort({ date: 1 }).exec(function(error, all_Logs) {
+            if (error) {
+                return error
+            } else {
+                response.render('pages/library', { data: all_Logs , mapsAPI: mapsAPI, query: query })
+            }
+        });        
+    } else {
+        response.redirect('/library');
+    }
+} else {
+    response.redirect('../login')
+    }
     },
     create_pin_get: (request, response) => {
         if (request.isAuthenticated()) {
@@ -121,24 +193,23 @@ module.exports = {
         }
     },
     library_map_get: (request, response) => {
-        // if (request.isAuthenticated()) {
+        if (request.isAuthenticated()) {
+            let query;
             Log.find({}, (error, all_Logs) => {
                 if (error) {
                     return error
                 } else {
-                    response.render('pages/map-view', { data: all_Logs , mapsAPI: mapsAPI })
+                    response.render('pages/map-view', { data: all_Logs , mapsAPI: mapsAPI, query: query})
                 }
             })
 
-        // } else {
-        //     response.redirect('../login')
-        // }
+        } else {
+            response.redirect('../login')
+        }
     },
-    search_get: (request, response) => {
-        console.log(request.query)
+    map_search_get: (request, response) => {
         const query = request.query;
         const season = query.subSort;
-        console.log(season);
         // if (request.isAuthenticated()) {
             if (season === "spring") {
                 Log.aggregate().project({
@@ -151,7 +222,7 @@ module.exports = {
                 }).match({
                     month: { $gte: 3, $lte: 5 }
                 }).exec(function(err, result) {
-                    response.render('pages/map-view', { data: result , mapsAPI: mapsAPI })
+                    response.render('pages/map-view', { data: result , mapsAPI: mapsAPI, query: season })
                 });          
     } else if (season === "summer") {
         Log.aggregate().project({
@@ -164,7 +235,7 @@ module.exports = {
         }).match({
             month: { $gte: 6, $lte: 8  }
         }).exec(function(err, result) {
-            response.render('pages/map-view', { data: result , mapsAPI: mapsAPI })
+            response.render('pages/map-view', { data: result , mapsAPI: mapsAPI, query: season })
         });          
 } else if (season === "fall") {
     Log.aggregate().project({
@@ -177,7 +248,7 @@ module.exports = {
     }).match({
         month: { $gte: 9, $lte: 11 }
     }).exec(function(err, result) {
-        response.render('pages/map-view', { data: result , mapsAPI: mapsAPI })
+        response.render('pages/map-view', { data: result , mapsAPI: mapsAPI, query: season })
     });          
 } else if (season === "winter") {
     Log.aggregate().project({
@@ -190,21 +261,18 @@ module.exports = {
     }).match({
         $or: [{ month: 12}, {month: {$gte: 1, $lte: 2} }]
     }).exec(function(err, result) {
-        response.render('pages/map-view', { data: result , mapsAPI: mapsAPI })
+        response.render('pages/map-view', { data: result , mapsAPI: mapsAPI, query: season })
     });          
-} else if (season === "season") {
-    Log.aggregate().project({
-        name: 1,
-        coords: 1,
-        date: 1,
-        month: {
-            $month: "$date"
+} else if (season === "all") {
+    Log.find({}, (error, all_Logs) => {
+        if (error) {
+            return error
+        } else {
+            response.render('pages/map-view', { data: all_Logs , mapsAPI: mapsAPI, query: query})
         }
-    }).match({
-        month: { $gte: 1, $lte: 12 }
-    }).exec(function(err, result) {
-        response.render('pages/map-view', { data: result , mapsAPI: mapsAPI })
-    });          
+    })       
+} else {
+    response.redirect('library/map_view');
 }
 }
 }

@@ -2,115 +2,32 @@
 <%- include ('../partials/navloggedin') -%>
         <div class="library-sort">
             <h6>Filter:</h6>
-            <!-- <select id="sort" name="sort">
-                <option value="date">Date</option>
-                <option value="type">Type</option>
-                <option value="location">Location</option>
-                </optgroup>
-            </select> -->
-            <select id="subSort" name="subSort">
-                <option value="season">Season</option>
-                <option value="spring">Spring</option>
-                <option value="summer">Summer</option>
-                <option value="fall">Fall</option>
-                <option value="winter">Winter</option>
-            </select>
-            <h6><a href="library/map_view">Map View</a></h6>
-            <!-- <div class="showAll"><input type="checkbox" id=showall name=showall><label for="showall">Show all</label>
-            </div> -->
+            <form action="/library/library_search" method="GET">
+                <select id="subSort" name="subSort">
+                    <% console.log(query) %>
+                    <option value="all" <%if (query === "all"){%>
+                        <%="selected"%>
+                    <%}%>>All</option>
+                    <option value="spring" <%if (query === "spring"){%>
+                        <%="selected"%>
+                    <%}%>>Spring</option>
+                    <option value="summer" <%if (query === "summer"){%>
+                        <%="selected"%>
+                    <%}%>>Summer</option>
+                    <option value="fall" <%if (query === "fall"){%>
+                        <%="selected"%>
+                    <%}%>>Fall</option>
+                    <option value="winter" <%if (query === "winter"){%>
+                        <%="selected"%>
+                    <%}%>>Winter</option>
+                </select>
+            <button type="submit">Search</button>
+        </form>
+        <h6 class="flex-right"><a href="/map_view"><div class="map-view"><span class="link-highlight">Map View</span></div></a></h6>
         </div>
-        <div class="library-container">
-            <div class="observations">
-                <% for (let i=0, j=1; i < data.length, j < data.length; i++, j++) { %>
-                    <% let dataI = data[i].date.toLocaleDateString() %>
-                    <% let dataJ = data[j].date.toLocaleDateString() %>
-                    <% if (dataI != dataJ) { %>
-                        <%- include('../partials/logentry', { log: data[i] }) -%>
-                    <% } %> 
-                    <% } %> 
-                <ul>
-                    <li> <i class="fas fa-chevron-down"></i></li>
-                    <li>Date: 4/19/2021 </li>
-                    <li><i class="fas fa-grip-lines-vertical"></i></li>
-                    <!-- <li> Species</li> -->
-                    <li>Location: Ames Nowell State Forest</li>
-                </ul>
                 <div class="imgs">
+                    <% for (log of data) { %>
+                        <%- include ('../partials/logcard', { log: log})  -%>
+                  <%  } %>
                 </div>
-                <ul>
-                    <li> <i class="fas fa-chevron-down"></i></li>
-                    <li>Date: 4/19/2021 </li>
-                    <li><i class="fas fa-grip-lines-vertical"></i></li>
-                    <!-- <li> Species</li> -->
-                    <li>Location: Ames Nowell State Forest</li>
-                </ul>
-            </div>
-            <!-- <div class="hide card-desc">
-                <ul>
-                    <li>Date: 4/19/2021 </li>
-                    <li>Location: Ames Nowell</li>
-                    <li>Species: Chicken of the Woods</li>
-                </ul>
-            </div>
-            <img src="public/imgs/library/eveningprimrose.jpg" class="hide"><div class="hide card-desc">
-                <ul>
-                    <li>Date: 4/19/2021 </li>
-                    <li>Location: Ames Nowell</li>
-                    <li>Species: Chicken of the Woods</li>
-                </ul>
-            </div>
-            <img src="public/imgs/library/lesserceladine.jpg" class="hide"><div class="hide card-desc">
-                <ul>
-                    <li>Date: 4/19/2021 </li>
-                    <li>Location: Ames Nowell</li>
-                    <li>Species: Chicken of the Woods</li>
-                </ul>
-            </div>
-            <img src="public/imgs/library/ramps.jpg" class="hide"><div class="hide card-desc">
-                <ul>
-                    <li>Date: 4/19/2021 </li>
-                    <li>Location: Ames Nowell</li>
-                    <li>Species: Chicken of the Woods</li>
-                </ul>
-            </div>
-            <img src="public/imgs/library/reddeadnettle.jpg" class="hide"><div class="hide card-desc">
-                <ul>
-                    <li>Date: 4/19/2021 </li>
-                    <li>Location: Ames Nowell</li>
-                    <li>Species: Chicken of the Woods</li>
-                </ul>
-            </div>
-            <img src="public/imgs/library/reishi.jpg" class="hide"><div class="hide card-desc">
-                <ul>
-                    <li>Date: 4/19/2021 </li>
-                    <li>Location: Ames Nowell</li>
-                    <li>Species: Chicken of the Woods</li>
-                </ul>
-            </div>
-            <img src="public/imgs/library/turkeytail.jpg" class="hide"><div class="hide card-desc">
-                <ul>
-                    <li>Date: 4/19/2021 </li>
-                    <li>Location: Ames Nowell</li>
-                    <li>Species: Chicken of the Woods</li>
-                </ul>
-            </div> -->
-        </div>
-    </div>
-    <script>
-                let img = document.querySelectorAll(".individual-card");
-        let carrot = document.querySelector(".fa-chevron-down")
-
-        
-        const showHide = function(e) {
-            for (let i = 0; i < img.length; i++)
-            img[i].classList.toggle("show")
-            e.stopPropagation()
-        }
-        
-        carrot.addEventListener("click", showHide);
-
-
-    </script>
-</body>
-
-</html>
+<%- include ('../partials/footer') -%>
