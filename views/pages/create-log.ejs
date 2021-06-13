@@ -18,11 +18,12 @@
             <div id="map"></div>
             <h6 class="help-link"><a href="/help"><span class="link-highlight">Help: What do I log?</span></a></h6>
         </div>
-            <form action="/library/:id" method="POST">
+            <form action="/library/:id" method="POST" enctype="multipart/form-data">
                 <div class="form-line">
                     <label for="lat">Latitude</label>
                     <input type="text" id="lat" name="coords" placeholder="Latitude">
                     </div>
+                    <div class="form-line">
                     <label for="lng">Longitude</label>
                     <input type="text" id="lng" name="coords" placeholder="Longitude">
                 </div>
@@ -42,8 +43,8 @@
                     <input type="radio" id="classification" name="classification" value="Plant"><label for="plant">Plant</label>
                     </div>
                     <div class="form-line">
-                        <label for="type">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                    <input type="radio" id="classification" name="classification" value="Flower"><label for="flower">Flower</label>
+                        <label for="type"></label>
+                    <div><input type="radio" id="classification" name="classification" value="Flower"><label for="flower">Flower</label>
                     <input type="radio" id="classification" name="classification" value="Tree"><label for="tree">Tree</label>
                     </div>
                 <div class="form-line">

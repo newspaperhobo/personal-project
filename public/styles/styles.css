@@ -444,6 +444,10 @@ ul.resources {
     margin-bottom: 1.5em;
 }
 
+.login-form input:nth-child(4){
+    margin-bottom: 0em;
+}
+
 .dashboard {
     padding-top: 0.3em;
 }
@@ -650,10 +654,6 @@ ul.details-page > * {
 }
 .about-container h6 {
     margin-bottom: 0em;
-}
-
-.about-container i {
-
 }
 
 

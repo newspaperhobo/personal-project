@@ -1,6 +1,25 @@
 const { response, request } = require("express");
-const Log = require('../models/log-model')
-const mapsAPI = process.env.MAPS_URL
+const Log = require('../models/log-model');
+const mapsAPI = process.env.MAPS_URL;
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'public/imgs/library')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname)
+    }
+});
+
+const imageFileFilter = (req, file, cb) => {
+  if(!file.originalname.match(/\.(jpg|jpeg|png|gif)$/)) {
+      return cb(new Error('You can upload only image files!'), false);
+  }
+  cb(null, true);
+};
+
+const upload = multer({ storage: storage, fileFilter: imageFileFilter});
 
 module.exports = {
     library_get: (request, response) => {
@@ -16,77 +35,6 @@ module.exports = {
         } else {
             response.redirect('../login')
         }
-    },
-    library_search_get: (request, response) => {
-        if (request.isAuthenticated()) {
-            const query = request.query;
-            const season = query.subSort;
-                if (season === "spring") {
-                    Log.aggregate().project({
-                        name: 1,
-                        coords: 1,
-                        date: 1,
-                        month: {
-                            $month: "$date"
-                        }
-                    }).match({
-                        month: { $gte: 3, $lte: 5 }
-                    }).exec(function(err, result) {
-                        response.render('pages/library', { data: result, query: season })
-                    });          
-        } else if (season === "summer") {
-            Log.aggregate().project({
-                name: 1,
-                coords: 1,
-                date: 1,
-                month: {
-                    $month: "$date"
-                }
-            }).match({
-                month: { $gte: 6, $lte: 8  }
-            }).exec(function(err, result) {
-                response.render('pages/library', { data: result , query: season })
-            });          
-    } else if (season === "fall") {
-        Log.aggregate().project({
-            name: 1,
-            coords: 1,
-            date: 1,
-            month: {
-                $month: "$date"
-            }
-        }).match({
-            month: { $gte: 9, $lte: 11 }
-        }).exec(function(err, result) {
-            response.render('pages/library', { data: result , mapsAPI: mapsAPI, query: season })
-        });          
-    } else if (season === "winter") {
-        Log.aggregate().project({
-            name: 1,
-            coords: 1,
-            date: 1,
-            month: {
-                $month: "$date"
-            }
-        }).match({
-            $or: [{ month: 12}, {month: {$gte: 1, $lte: 2} }]
-        }).exec(function(err, result) {
-            response.render('pages/library', { data: result, query: season })
-        });          
-    } else if (season === "all") {
-        Log.find({}).sort({ date: 1 }).exec(function(error, all_Logs) {
-            if (error) {
-                return error
-            } else {
-                response.render('pages/library', { data: all_Logs , mapsAPI: mapsAPI, query: query })
-            }
-        });        
-    } else {
-        response.redirect('/library');
-    }
-} else {
-    response.redirect('../login')
-    }
     },
     create_pin_get: (request, response) => {
         if (request.isAuthenticated()) {
@@ -116,7 +64,7 @@ module.exports = {
             response.redirect('../login')
         }
     },
-    id_details_post: (request, response) => {
+    id_details_post: [upload.single('img1'), (request, response) => {
         if (request.isAuthenticated()) {
             if (request.body.name === "") {
             const newLog = new Log({
@@ -125,7 +73,7 @@ module.exports = {
                 name: "Unknown",
                 classification: request.body.classification,
                 notes: request.body.notes,
-                img1: request.body.img1,
+                img1: request.file.filename,
                 img2: request.body.img2,
                 img3: request.body.img3,
                 img4: request.body.img4,
@@ -138,7 +86,7 @@ module.exports = {
                 name: request.body.name,
                 classification: request.body.classification,
                 notes: request.body.notes,
-                img1: request.body.img1,
+                img1: request.file.filename,
                 img2: request.body.img2,
                 img3: request.body.img3,
                 img4: request.body.img4, 
@@ -146,7 +94,7 @@ module.exports = {
             newLog.save(); }
     }
             response.redirect('/library')
-        },
+        }],
         id_details_put: (request, response) => {
             const { id } = request.params;
             Log.findByIdAndUpdate(id, {$set: {
