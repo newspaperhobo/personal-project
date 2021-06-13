@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs');
 
-app.use(morgan('dev'));
+// app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded( { extended: true }));
