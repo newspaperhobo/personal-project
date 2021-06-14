@@ -51,7 +51,7 @@ module.exports = {
     response.render('pages/register')
   },
   register_post: (request, response) => {
-    User.register({ username: request.body.username }, request.body.password, (error, user) => {
+    User.register({ username: request.body.username },request.body.password, (error, user) => {
       if (error) {
         console.log(error);
         response.redirect('/register');

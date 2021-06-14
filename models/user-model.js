@@ -8,13 +8,9 @@ const passportLocalMongoose = require('passport-local-mongoose');
 const userSchema = new Schema({
   username: {
     type: String,
-    // required: [true, 'Please enter a username.'],
-    // minLength: [5, 'Your username must be at least 5 characters long.']
   },
   password: {
     type: String,
-    // required: [true, 'Please enter a password.'],
-    // minLength: [6, 'Your password must be at least 6 characters long.']
   }, 
 //   googleId: {
 //     type: String,
