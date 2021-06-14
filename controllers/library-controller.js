@@ -13,13 +13,13 @@ const storage = multer.diskStorage({
 });
 
 const imageFileFilter = (req, file, cb) => {
-  if(!file.originalname.match(/\.(jpg|jpeg|png|gif)$/)) {
-      return cb(new Error('You can upload only image files!'), false);
-  }
-  cb(null, true);
+    if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/)) {
+        return cb(new Error('You can upload only image files!'), false);
+    }
+    cb(null, true);
 };
 
-const upload = multer({ storage: storage, fileFilter: imageFileFilter});
+const upload = multer({ storage: storage, fileFilter: imageFileFilter });
 
 module.exports = {
     library_get: (request, response) => {
@@ -29,76 +29,83 @@ module.exports = {
             header = header.slice(-6)
             if (header === "spring") {
                 Log.aggregate().project({
-                  name: 1,
-                  coords: 1,
-                  date: 1,
-                  img1: 1,
-                  month: {
-                    $month: "$date"
-                  }
+                    name: 1,
+                    coords: 1,
+                    date: 1,
+                    img1: 1,
+                    month: {
+                        $month: "$date"
+                    }
                 }).match({
-                  month: { $gte: 3, $lte: 5 }
+                    month: { $gte: 3, $lte: 5 }
                 }).exec(function (err, result) {
-                  response.render('pages/library', { data: result, query: header, mapsAPI: mapsAPI })
+                    response.render('pages/library', { data: result, query: header, mapsAPI: mapsAPI })
                 });
-              }  else if (header === "summer") {
+            } else if (header === "summer") {
                 Log.aggregate().project({
-                  name: 1,
-                  coords: 1,
-                  date: 1,
-                  img1: 1,
-                  month: {
-                    $month: "$date"
-                  }
+                    name: 1,
+                    coords: 1,
+                    date: 1,
+                    img1: 1,
+                    month: {
+                        $month: "$date"
+                    }
                 }).match({
-                  month: { $gte: 6, $lte: 8 }
+                    month: { $gte: 6, $lte: 8 }
                 }).exec(function (err, result) {
-                  response.render('pages/library', { data: result, query: header, mapsAPI: mapsAPI })
+                    response.render('pages/library', { data: result, query: header, mapsAPI: mapsAPI })
                 });
-              } else if (header === "autumn") {
+            } else if (header === "autumn") {
                 Log.aggregate().project({
-                  name: 1,
-                  coords: 1,
-                  date: 1,
-                  img1: 1,
-                  month: {
-                    $month: "$date"
-                  }
+                    name: 1,
+                    coords: 1,
+                    date: 1,
+                    img1: 1,
+                    month: {
+                        $month: "$date"
+                    }
                 }).match({
-                  month: { $gte: 9, $lte: 11 }
+                    month: { $gte: 9, $lte: 11 }
                 }).exec(function (err, result) {
-                  response.render('pages/library', { data: result, mapsAPI: mapsAPI, query: header })
+                    response.render('pages/library', { data: result, mapsAPI: mapsAPI, query: header })
                 });
-              } else if (header === "winter") {
+            } else if (header === "winter") {
                 Log.aggregate().project({
-                  name: 1,
-                  coords: 1,
-                  date: 1,
-                  img1: 1,
-                  month: {
-                    $month: "$date"
-                  }
+                    name: 1,
+                    coords: 1,
+                    date: 1,
+                    img1: 1,
+                    month: {
+                        $month: "$date"
+                    }
                 }).match({
-                  $or: [{ month: 12 }, { month: { $gte: 1, $lte: 2 } }]
+                    $or: [{ month: 12 }, { month: { $gte: 1, $lte: 2 } }]
                 }).exec(function (err, result) {
-                  response.render('pages/library', { data: result, mapsAPI: mapsAPI, query: header })
+                    response.render('pages/library', { data: result, mapsAPI: mapsAPI, query: header })
                 });
-              } else {
-            Log.find({}).sort({ date: 1 }).exec(function(error, all_Logs) {
-                if (error) {
-                    return error
-                } else {
-                    response.render('pages/library', { data: all_Logs , mapsAPI: mapsAPI, query: header })
-                }
-            });
-              }
+            } else {
+                Log.find({}).sort({ date: 1 }).exec(function (error, all_Logs) {
+                    if (error) {
+                        return error
+                    } else {
+                        response.render('pages/library', { data: all_Logs, mapsAPI: mapsAPI, query: header })
+                    }
+                });
+            }
+        } else {
+            response.redirect('../login')
+        }
+    },
+    create_pin_get: (request, response) => {
+        if (request.isAuthenticated()) {
+            response.render('pages/create-pin', { mapsAPI: mapsAPI })
         } else {
             response.redirect('../login')
         }
     },
     create_log_get: (request, response) => {
         if (request.isAuthenticated()) {
-            response.render('pages/create-log', { mapsAPI : mapsAPI })
+            response.render('pages/create-log', { mapsAPI: mapsAPI })
         } else {
             response.redirect('../login')
         }
@@ -120,37 +127,39 @@ module.exports = {
     id_details_post: [upload.single('img1'), (request, response) => {
         if (request.isAuthenticated()) {
             if (request.body.name === "") {
-            const newLog = new Log({
-                coords: request.body.coords,
-                location: request.body.location,
-                name: "Unknown",
-                classification: request.body.classification,
-                notes: request.body.notes,
-                img1: request.file.filename,
-                img2: request.body.img2,
-                img3: request.body.img3,
-                img4: request.body.img4,
-            })
-            newLog.save();
-        } else {
-            const newLog = new Log({
-                coords: request.body.coords,
-                location: request.body.location,
-                name: request.body.name,
-                classification: request.body.classification,
-                notes: request.body.notes,
-                img1: request.file.filename,
-                img2: request.body.img2,
-                img3: request.body.img3,
-                img4: request.body.img4, 
-            })
-            newLog.save(); }
-    }
-            response.redirect('/library')
-        }],
-        id_details_put: (request, response) => {
-            const { id } = request.params;
-            Log.findByIdAndUpdate(id, {$set: {
+                const newLog = new Log({
+                    coords: request.body.coords,
+                    location: request.body.location,
+                    name: "Unknown",
+                    classification: request.body.classification,
+                    notes: request.body.notes,
+                    img1: request.file.filename,
+                    img2: request.body.img2,
+                    img3: request.body.img3,
+                    img4: request.body.img4,
+                })
+                newLog.save();
+            } else {
+                const newLog = new Log({
+                    coords: request.body.coords,
+                    location: request.body.location,
+                    name: request.body.name,
+                    classification: request.body.classification,
+                    notes: request.body.notes,
+                    img1: request.file.filename,
+                    img2: request.body.img2,
+                    img3: request.body.img3,
+                    img4: request.body.img4,
+                })
+                newLog.save();
+            }
+        }
+        response.redirect('/library')
+    }],
+    id_details_put: (request, response) => {
+        const { id } = request.params;
+        Log.findByIdAndUpdate(id, {
+            $set: {
                 coords: request.body.coords,
                 location: request.body.location,
                 date: request.body.date,
@@ -160,25 +169,26 @@ module.exports = {
                 img1: request.body.img1,
                 img2: request.body.img2,
                 img3: request.body.img3,
-                img4: request.body.img4, 
-            }}, { new: true }, error => {
-                if (error) {
-                    return error
-                } else {
-                    response.redirect(`./${id}`);
-                }
-            })
-        },
-        id_details_delete: (request, response) => {
-            const { id } = request.params;
-            Log.deleteOne({ _id: id }, error => {
-                if (error) {
-                    return error
-                } else {
-                    response.redirect('/library')
-                }
-            })
-        },
+                img4: request.body.img4,
+            }
+        }, { new: true }, error => {
+            if (error) {
+                return error
+            } else {
+                response.redirect(`./${id}`);
+            }
+        })
+    },
+    id_details_delete: (request, response) => {
+        const { id } = request.params;
+        Log.deleteOne({ _id: id }, error => {
+            if (error) {
+                return error
+            } else {
+                response.redirect('/library')
+            }
+        })
+    },
     update_log_get: (request, response) => {
         if (request.isAuthenticated()) {
             const { id } = request.params;
@@ -197,69 +207,69 @@ module.exports = {
         const query = request.query;
         const season = query.subSort;
         // if (request.isAuthenticated()) {
-            if (season === "spring") {
-                Log.aggregate().project({
-                    name: 1,
-                    coords: 1,
-                    date: 1,
-                    month: {
-                        $month: "$date"
-                    }
-                }).match({
-                    month: { $gte: 3, $lte: 5 }
-                }).exec(function(err, result) {
-                    response.render('pages/map-view', { data: result , mapsAPI: mapsAPI, query: season })
-                });          
-    } else if (season === "summer") {
-        Log.aggregate().project({
-            name: 1,
-            coords: 1,
-            date: 1,
-            month: {
-                $month: "$date"
-            }
-        }).match({
-            month: { $gte: 6, $lte: 8  }
-        }).exec(function(err, result) {
-            response.render('pages/map-view', { data: result , mapsAPI: mapsAPI, query: season })
-        });          
-} else if (season === "autumn") {
-    Log.aggregate().project({
-        name: 1,
-        coords: 1,
-        date: 1,
-        month: {
-            $month: "$date"
-        }
-    }).match({
-        month: { $gte: 9, $lte: 11 }
-    }).exec(function(err, result) {
-        response.render('pages/map-view', { data: result , mapsAPI: mapsAPI, query: season })
-    });          
-} else if (season === "winter") {
-    Log.aggregate().project({
-        name: 1,
-        coords: 1,
-        date: 1,
-        month: {
-            $month: "$date"
-        }
-    }).match({
-        $or: [{ month: 12}, {month: {$gte: 1, $lte: 2} }]
-    }).exec(function(err, result) {
-        response.render('pages/map-view', { data: result , mapsAPI: mapsAPI, query: season })
-    });          
-} else if (season === "all") {
-    Log.find({}, (error, all_Logs) => {
-        if (error) {
-            return error
+        if (season === "spring") {
+            Log.aggregate().project({
+                name: 1,
+                coords: 1,
+                date: 1,
+                month: {
+                    $month: "$date"
+                }
+            }).match({
+                month: { $gte: 3, $lte: 5 }
+            }).exec(function (err, result) {
+                response.render('pages/map-view', { data: result, mapsAPI: mapsAPI, query: season })
+            });
+        } else if (season === "summer") {
+            Log.aggregate().project({
+                name: 1,
+                coords: 1,
+                date: 1,
+                month: {
+                    $month: "$date"
+                }
+            }).match({
+                month: { $gte: 6, $lte: 8 }
+            }).exec(function (err, result) {
+                response.render('pages/map-view', { data: result, mapsAPI: mapsAPI, query: season })
+            });
+        } else if (season === "autumn") {
+            Log.aggregate().project({
+                name: 1,
+                coords: 1,
+                date: 1,
+                month: {
+                    $month: "$date"
+                }
+            }).match({
+                month: { $gte: 9, $lte: 11 }
+            }).exec(function (err, result) {
+                response.render('pages/map-view', { data: result, mapsAPI: mapsAPI, query: season })
+            });
+        } else if (season === "winter") {
+            Log.aggregate().project({
+                name: 1,
+                coords: 1,
+                date: 1,
+                month: {
+                    $month: "$date"
+                }
+            }).match({
+                $or: [{ month: 12 }, { month: { $gte: 1, $lte: 2 } }]
+            }).exec(function (err, result) {
+                response.render('pages/map-view', { data: result, mapsAPI: mapsAPI, query: season })
+            });
+        } else if (season === "all") {
+            Log.find({}, (error, all_Logs) => {
+                if (error) {
+                    return error
+                } else {
+                    response.render('pages/map-view', { data: all_Logs, mapsAPI: mapsAPI, query: query })
+                }
+            })
         } else {
-            response.render('pages/map-view', { data: all_Logs , mapsAPI: mapsAPI, query: query})
+            response.redirect('library/map_view');
         }
-    })       
-} else {
-    response.redirect('library/map_view');
-}
-}
+    }
 }
 

@@ -19,6 +19,7 @@ const logSchema = new Schema ({
     },
     img1: {
         type: String,
+        required: [true, "Please upload an image."]
     },
     img2: {
         type: String,
