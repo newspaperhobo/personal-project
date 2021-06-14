@@ -41,6 +41,7 @@ let map, marker, currentPosition;
 
 function initMap() {
     const status = document.querySelector('#status');
+    const status2 = document.querySelector('#status2');
     // if geolocation is supported and can access current position
     function success(position) {
             // current location of the user
@@ -90,10 +91,12 @@ function initMap() {
                 // Center the map at given point
                 map.panTo(point);
             });
-
+            status.textContent = 'Location found!'; 
+        }
         // if geolocation is support, but cannot get current location
-        } function error() {
-            status.textContent = 'Unable to retrieve your location. Please enable location services';
+        function error() {
+            status.textContent = 'Unable to retrieve your location.'
+            status2.textContent = 'Please clear your cookies and enable location services.';
           }
           // if geolocation is not supported
             if(!navigator.geolocation) {
