@@ -7,8 +7,6 @@
                 <li><span class="text-gray2">Location:</span>&nbsp;<%= log.location %></li>
                 <li><span class="text-gray2">Classification:</span>&nbsp;<%= log.classification %></li>
                 <li><span class="text-gray2">Notes:</span>&nbsp;<%= log.notes %></li>
-                <li><span class="text-gray2">More photos:</span>&nbsp;<%= log.img2 %> <%= log.img3 %> <%= log.img4 %></li>
-            </ul>
             <div class="details-button"><button><a href="./edit/<%= log._id %>">Edit</a></button>
     <form action="./books/<%= log._id %>?_method=DELETE" method="POST"><button>Delete</button></div>
 <%- include ('../partials/footer') -%>
