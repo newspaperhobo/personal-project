@@ -4,13 +4,11 @@ const siteController = require('../controllers/site-controller')
 
 router.route('/')
     .get(siteController.index);
-router.route('/login_register')
-    .get(siteController.login_register);
 router.route('/login')
     .get(siteController.login)
     .post(siteController.login_post);
 router.route('/logout')
-    .get(siteController.logout)
+    .get(siteController.logout);
 router.route('/register')
     .get(siteController.register)
     .post(siteController.register_post);
