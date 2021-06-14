@@ -79,7 +79,7 @@ module.exports = {
     response.render('pages/resources')
   },
   library_map_get: (request, response) => {
-    // if (request.isAuthenticated()) {
+    if (request.isAuthenticated()) {
       let header = request.headers.referer
       header = header.slice(-6)
       let query;
@@ -148,9 +148,9 @@ module.exports = {
       }
     })
   }
-    // } else {
-    //     response.redirect('../login')
-    // }
+    } else {
+        response.redirect('../login')
+    }
   }, library_search_get: (request, response) => {
     if (request.isAuthenticated()) {
       const query = request.query;
