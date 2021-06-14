@@ -55,7 +55,7 @@ module.exports = {
                 }).exec(function (err, result) {
                   response.render('pages/library', { data: result, query: header, mapsAPI: mapsAPI })
                 });
-              } else if (header === "fall") {
+              } else if (header === "autumn") {
                 Log.aggregate().project({
                   name: 1,
                   coords: 1,
@@ -230,7 +230,7 @@ module.exports = {
         }).exec(function(err, result) {
             response.render('pages/map-view', { data: result , mapsAPI: mapsAPI, query: season })
         });          
-} else if (season === "fall") {
+} else if (season === "autumn") {
     Log.aggregate().project({
         name: 1,
         coords: 1,
