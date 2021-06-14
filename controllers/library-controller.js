@@ -96,13 +96,6 @@ module.exports = {
             response.redirect('../login')
         }
     },
-    create_pin_get: (request, response) => {
-        if (request.isAuthenticated()) {
-            response.render('pages/create-pin', { mapsAPI: mapsAPI })
-        } else {
-            response.redirect('../login')
-        }
-    },
     create_log_get: (request, response) => {
         if (request.isAuthenticated()) {
             response.render('pages/create-log', { mapsAPI : mapsAPI })

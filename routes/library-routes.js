@@ -5,8 +5,6 @@ const libraryController = require('../controllers/library-controller');
 router.route("/")
  .get(libraryController.library_get);
 router.route("/new")
- .get(libraryController.create_pin_get);
-router.route("/new-form")
  .get(libraryController.create_log_get);
 router.route("/map_search")
   .get(libraryController.map_search_get);
