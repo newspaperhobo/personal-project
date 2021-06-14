@@ -4,7 +4,6 @@
             <h6>Filter:</h6>
             <form action="/library_search" method="GET">
                 <select id="subSort" name="subSort">
-                    <% console.log(query) %>
                     <option value="all" <%if (query === "all"){%>
                         <%="selected"%>
                     <%}%>>All</option>
@@ -14,7 +13,7 @@
                     <option value="summer" <%if (query === "summer"){%>
                         <%="selected"%>
                     <%}%>>Summer</option>
-                    <option value="fall" <%if (query === "fall"){%>
+                    <option value="autumn" <%if (query === "autumn"){%>
                         <%="selected"%>
                     <%}%>>Fall</option>
                     <option value="winter" <%if (query === "winter"){%>
@@ -23,7 +22,7 @@
                 </select>
             <button type="submit">Search</button>
         </form>
-        <h6 class="flex-right"><a href="/map_view"><div class="map-view"><span class="link-highlight">Map View</span></div></a></h6>
+        <h6 class="flex-right"><a href="./map_view"><div class="map-view"><span class="link-highlight">Map View</span></div></a></h6>
         </div>
                 <div class="imgs">
                     <% for (log of data) { %>

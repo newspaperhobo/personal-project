@@ -1,6 +1,5 @@
 const body = document.body;
 const theme = localStorage.getItem('theme');
-console.log(theme)
 if (theme === "dark" || theme ===  "nature" || theme === "mushroom") {
     body.classList.remove("primary")
     body.classList.add(theme)  

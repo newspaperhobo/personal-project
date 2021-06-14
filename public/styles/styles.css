@@ -132,11 +132,7 @@ body {
     color: var(--text);
 }
 
-h3, h6 {
-    margin:0.3em;
-}
-
-h2, h4, h6 {
+h2, h3, h4, h6 {
     margin: 0;
     padding: 0;
 }
@@ -212,6 +208,14 @@ p {
 
 }
 
+.flex {
+    display: flex;
+
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
 .underline {
     text-decoration: underline;
 }
@@ -366,11 +370,11 @@ a#mushroom::before{
     transition: 0.3s ease-in-out;
   }
 
-  .join {
+  span.join p {
     text-align: center;
     font-size: 0.7em; 
     color: var(--join-link); 
-    margin-bottom: 0.3em
+    margin-bottom: 0em;
 }
 
 a.register {
@@ -475,19 +479,17 @@ margin: 0.7em 0;
     margin: 0 auto;
     max-width: 400px;
     display: flex;
-    /* flex-wrap: wrap; */
     margin-bottom: 0.4em;
 }
 
 .more-info-body label {
-    font-size: .45em;
-    width: 38%;
+    font-size: .55em;
+    width: 33%;
 
 }
 
 .more-info-body input {
     flex:2;
-    align-self: center;
     padding: 0.5em;
 }
 
@@ -606,19 +608,15 @@ justify-content: center;
     padding: 0.5em;
 }
 
-
-ul.details-page {
-    width: 40%;
-    margin: 0 auto;
-}
 ul.details-page > * {
     margin: 0 auto;
-    display: flex;
-    justify-content: center;
+    text-align: center;
+    width:80%;
 }
 
 .details-img-container {
     width:35%;
+    min-width: 250px;
     margin: 0 auto;
 }
 .log-details-img {
@@ -715,6 +713,17 @@ ul.details-page > * {
 ul.nav-smaller-width {
     margin: 0 2.5em;
 }
+.main h3 {
+    font-size: 60px;
+}
+.more-info-body label {
+    font-size: .7em;
+    margin-right: .3em;
+    
+}
+ul.details-page > * {
+    width:40%;
+}
 }
 /*tablet*/
 @media screen and (min-width:768px) {
@@ -737,17 +746,23 @@ ul.nav-smaller-width {
             width:90%;
             height: 75%;
         }
+        .main h3 {
+            font-size: 60px;
+        }
+        ul.details-page > * {
+            width:50%;
+        }
     }
 /*mobile text sizes*/
 @media screen and (min-width: 480px) {
     .observations ul{
         font-size: 1.5rem;
     }
-    .more-info-body label {
+    /* .more-info-body label {
         font-size: .7em;
         margin-right: .3em;
         
-    }
+    } */
 }
 
 

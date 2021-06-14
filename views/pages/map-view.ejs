@@ -14,7 +14,6 @@
 <div class="library-sort"><h6>Filter:</h6>
 <form action="/library/map_search" method="GET">
 <select id="subSort" name="subSort">
-    <% console.log(query) %>
     <option value="all" <%if (query === "all"){%>
         <%="selected"%>
     <%}%>>All</option>
@@ -24,7 +23,7 @@
     <option value="summer" <%if (query === "summer"){%>
         <%="selected"%>
     <%}%>>Summer</option>
-    <option value="fall" <%if (query === "fall"){%>
+    <option value="autumn" <%if (query === "autumn"){%>
         <%="selected"%>
     <%}%>>Fall</option>
     <option value="winter" <%if (query === "winter"){%>
@@ -41,7 +40,6 @@
         <script>
             let locations = []
             let data = <%- JSON.stringify(data) %>;
-            console.log(data)
 
         function initMap() {
             if (navigator.geolocation) {
