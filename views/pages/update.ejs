@@ -40,24 +40,24 @@
                 </div>
                 <div class="form-line">
                     <label for="type">Type:</label>
-                    <input type="radio" id="classification" name="classification" value="Mushroom"   
+                    <div class= "radio">
+                    <div><input type="radio" id="classification" name="classification" value="Mushroom"   
                     <%if (foundLog.classification === "Mushroom"){%>
                         <%="checked"%>
                     <%}%>
                 ><label
-                        for="mushroom">Mushroom</label>
+                        for="mushroom">Mushroom</label></div><div>
                     <input type="radio" id="classification" name="classification" value="Plant" <%if (foundLog.classification === "Plant"){%>
                         <%="checked"%>
                     <%}%>><label for="plant">Plant</label>
                     </div>
-                    <div class="form-line">
-                        <label for="type"></label>
+                    <div>
                     <input type="radio" id="classification" name="classification" value="Flower" <%if (foundLog.classification === "Flower"){%>
                         <%="checked"%>
-                    <%}%>><label for="flower">Flower</label>
+                    <%}%>><label for="flower">Flower</label></div><div>
                     <input type="radio" id="classification" name="classification" value="Tree" <%if (foundLog.classification === "Tree"){%>
                         <%="checked"%>
-                    <%}%>><label for="tree">Tree</label>
+                    <%}%>><label for="tree">Tree</label></div></div>
                     </div>
                 <div class="form-line">
                     <label for="notes">Notes</label>
