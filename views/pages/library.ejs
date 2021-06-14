@@ -4,7 +4,6 @@
             <h6>Filter:</h6>
             <form action="/library_search" method="GET">
                 <select id="subSort" name="subSort">
-                    <% console.log(query) %>
                     <option value="all" <%if (query === "all"){%>
                         <%="selected"%>
                     <%}%>>All</option>

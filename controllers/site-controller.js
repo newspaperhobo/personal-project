@@ -80,15 +80,74 @@ module.exports = {
   },
   library_map_get: (request, response) => {
     // if (request.isAuthenticated()) {
-    let query;
-    Log.find({}, (error, all_Logs) => {
+      let header = request.headers.referer
+      header = header.slice(-6)
+      let query;
+    if (header === "spring") {
+      Log.aggregate().project({
+        name: 1,
+        coords: 1,
+        date: 1,
+        img1: 1,
+        month: {
+          $month: "$date"
+        }
+      }).match({
+        month: { $gte: 3, $lte: 5 }
+      }).exec(function (err, result) {
+        response.render('pages/map-view', { data: result, query: header, mapsAPI: mapsAPI })
+      });
+    }  else if (header === "summer") {
+      Log.aggregate().project({
+        name: 1,
+        coords: 1,
+        date: 1,
+        img1: 1,
+        month: {
+          $month: "$date"
+        }
+      }).match({
+        month: { $gte: 6, $lte: 8 }
+      }).exec(function (err, result) {
+        response.render('pages/map-view', { data: result, query: header, mapsAPI: mapsAPI })
+      });
+    } else if (header === "fall") {
+      Log.aggregate().project({
+        name: 1,
+        coords: 1,
+        date: 1,
+        img1: 1,
+        month: {
+          $month: "$date"
+        }
+      }).match({
+        month: { $gte: 9, $lte: 11 }
+      }).exec(function (err, result) {
+        response.render('pages/map-view', { data: result, mapsAPI: mapsAPI, query: header })
+      });
+    } else if (header === "winter") {
+      Log.aggregate().project({
+        name: 1,
+        coords: 1,
+        date: 1,
+        img1: 1,
+        month: {
+          $month: "$date"
+        }
+      }).match({
+        $or: [{ month: 12 }, { month: { $gte: 1, $lte: 2 } }]
+      }).exec(function (err, result) {
+        response.render('pages/map-view', { data: result, mapsAPI: mapsAPI, query: header })
+      });
+    }
+    else { Log.find({}, (error, all_Logs) => {
       if (error) {
         return error
       } else {
         response.render('pages/map-view', { data: all_Logs, mapsAPI: mapsAPI, query: query })
       }
     })
-
+  }
     // } else {
     //     response.redirect('../login')
     // }
@@ -108,8 +167,7 @@ module.exports = {
         }).match({
           month: { $gte: 3, $lte: 5 }
         }).exec(function (err, result) {
-          console.log(result);
-          response.render('pages/library', { data: result, query: season })
+          response.render('pages/library', { data: result, mapsAPI: mapsAPI, query: season })
         });
       } else if (season === "summer") {
         Log.aggregate().project({
@@ -123,7 +181,7 @@ module.exports = {
         }).match({
           month: { $gte: 6, $lte: 8 }
         }).exec(function (err, result) {
-          response.render('pages/library', { data: result, query: season })
+          response.render('pages/library', { data: result, mapsAPI: mapsAPI, query: season })
         });
       } else if (season === "fall") {
         Log.aggregate().project({
@@ -151,7 +209,7 @@ module.exports = {
         }).match({
           $or: [{ month: 12 }, { month: { $gte: 1, $lte: 2 } }]
         }).exec(function (err, result) {
-          response.render('pages/library', { data: result, query: season })
+          response.render('pages/library', { data: result, mapsAPI: mapsAPI, query: season })
         });
       } else if (season === "all") {
         Log.find({}).sort({ date: 1 }).exec(function (error, all_Logs) {

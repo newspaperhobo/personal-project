@@ -8,8 +8,6 @@ router.route("/new")
  .get(libraryController.create_pin_get);
 router.route("/new-form")
  .get(libraryController.create_log_get);
- router.route("/map_view")
-  .get(libraryController.library_map_get);
 router.route("/map_search")
   .get(libraryController.map_search_get);
 router.route("/:id")

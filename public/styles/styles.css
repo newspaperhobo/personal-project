@@ -132,11 +132,7 @@ body {
     color: var(--text);
 }
 
-h3, h6 {
-    margin:0.3em;
-}
-
-h2, h4, h6 {
+h2, h3, h4, h6 {
     margin: 0;
     padding: 0;
 }
@@ -366,11 +362,11 @@ a#mushroom::before{
     transition: 0.3s ease-in-out;
   }
 
-  .join {
+  span.join p {
     text-align: center;
     font-size: 0.7em; 
     color: var(--join-link); 
-    margin-bottom: 0.3em
+    margin-bottom: 0em;
 }
 
 a.register {
@@ -715,6 +711,9 @@ ul.details-page > * {
 ul.nav-smaller-width {
     margin: 0 2.5em;
 }
+.main h3 {
+    font-size: 60px;
+}
 }
 /*tablet*/
 @media screen and (min-width:768px) {
@@ -736,6 +735,9 @@ ul.nav-smaller-width {
             margin-top: 0.5em;
             width:90%;
             height: 75%;
+        }
+        .main h3 {
+            font-size: 60px;
         }
     }
 /*mobile text sizes*/
