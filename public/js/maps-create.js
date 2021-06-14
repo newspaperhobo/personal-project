@@ -40,8 +40,9 @@
 let map, marker, currentPosition;
 
 function initMap() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((position) => {
+    const status = document.querySelector('#status');
+    // if geolocation is supported and can access current position
+    function success(position) {
             // current location of the user
             currentPosition = {
                 lat: position.coords.latitude,
@@ -89,6 +90,18 @@ function initMap() {
                 // Center the map at given point
                 map.panTo(point);
             });
-        })
-    }
-}
+
+        // if geolocation is support, but cannot get current location
+        } function error() {
+            status.textContent = 'Unable to retrieve your location. Please enable location services';
+          }
+          // if geolocation is not supported
+            if(!navigator.geolocation) {
+                status.textContent = 'Geolocation is not supported by your browser';
+                // if geolocation is supported
+              } else {
+                status.textContent = 'Locating…';
+                navigator.geolocation.getCurrentPosition(success, error);
+              }
+        }
+
