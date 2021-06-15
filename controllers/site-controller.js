@@ -95,6 +95,7 @@ module.exports = {
     if (request.isAuthenticated()) {
       const query = request.query;
       const season = query.subSort;
+      const userReq = request.user._id
       if (season === "spring") {
         Log.aggregate().project({
           name: 1,
@@ -103,8 +104,9 @@ module.exports = {
           img1: 1,
           month: {
             $month: "$date"
-          }
+          },
         }).match({
+          user: userReq,
           month: { $gte: 3, $lte: 5 }
         }).exec(function (err, result) {
           response.render('pages/library', { data: result, mapsAPI: mapsAPI, query: season })
@@ -117,8 +119,9 @@ module.exports = {
           img1: 1,
           month: {
             $month: "$date"
-          }
+          },
         }).match({
+          user_id: userReq,
           month: { $gte: 6, $lte: 8 }
         }).exec(function (err, result) {
           response.render('pages/library', { data: result, mapsAPI: mapsAPI, query: season })
@@ -131,8 +134,9 @@ module.exports = {
           img1: 1,
           month: {
             $month: "$date"
-          }
+          },
         }).match({
+          user_id: userReq,
           month: { $gte: 9, $lte: 11 }
         }).exec(function (err, result) {
           response.render('pages/library', { data: result, mapsAPI: mapsAPI, query: season })
@@ -145,8 +149,9 @@ module.exports = {
           img1: 1,
           month: {
             $month: "$date"
-          }
+          },
         }).match({
+          user_id: userReq,
           $or: [{ month: 12 }, { month: { $gte: 1, $lte: 2 } }]
         }).exec(function (err, result) {
           response.render('pages/library', { data: result, mapsAPI: mapsAPI, query: season })

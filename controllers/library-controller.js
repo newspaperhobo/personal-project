@@ -146,6 +146,7 @@ module.exports = {
     map_search_get: (request, response) => {
         const query = request.query;
         const season = query.subSort;
+        const userReq = request.user._id
         if (request.isAuthenticated()) {
         if (season === "spring") {
             Log.aggregate().project({
@@ -154,8 +155,10 @@ module.exports = {
                 date: 1,
                 month: {
                     $month: "$date"
-                }
+                },
+                user_id,
             }).match({
+                user_id: userReq,
                 month: { $gte: 3, $lte: 5 }
             }).exec(function (err, result) {
                 response.render('pages/map-view', { data: result, mapsAPI: mapsAPI, query: season })
@@ -167,8 +170,10 @@ module.exports = {
                 date: 1,
                 month: {
                     $month: "$date"
-                }
+                },
+                user_id,
             }).match({
+                user_id: userReq,
                 month: { $gte: 6, $lte: 8 }
             }).exec(function (err, result) {
                 response.render('pages/map-view', { data: result, mapsAPI: mapsAPI, query: season })
@@ -180,8 +185,10 @@ module.exports = {
                 date: 1,
                 month: {
                     $month: "$date"
-                }
+                },
+                user_id,
             }).match({
+                user_id: userReq,
                 month: { $gte: 9, $lte: 11 }
             }).exec(function (err, result) {
                 response.render('pages/map-view', { data: result, mapsAPI: mapsAPI, query: season })
@@ -193,8 +200,10 @@ module.exports = {
                 date: 1,
                 month: {
                     $month: "$date"
-                }
+                },
+                user_id,
             }).match({
+                user_id: userReq,
                 $or: [{ month: 12 }, { month: { $gte: 1, $lte: 2 } }]
             }).exec(function (err, result) {
                 response.render('pages/map-view', { data: result, mapsAPI: mapsAPI, query: season })
