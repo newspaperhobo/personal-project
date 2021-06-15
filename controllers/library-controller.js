@@ -25,7 +25,7 @@ module.exports = {
     library_get: (request, response) => {
         if (request.isAuthenticated()) {
             let query;
-                Log.find({}).sort({ date: 1 }).exec(function (error, all_Logs) {
+                Log.find({ user_id: request.user._id }).sort({ date: 1 }).exec(function (error, all_Logs) {
                     if (error) {
                         return error
                     } else {
@@ -70,6 +70,8 @@ module.exports = {
                     img2: request.body.img2,
                     img3: request.body.img3,
                     img4: request.body.img4,
+                    user_id: request.user._id,
+                    username: request.user.username,
                 })
                 newLog.save();
             } else {
@@ -83,6 +85,8 @@ module.exports = {
                     img2: request.body.img2,
                     img3: request.body.img3,
                     img4: request.body.img4,
+                    user_id: request.user._id,
+                    username: request.user.username,
                 })
                 newLog.save();
             }

@@ -8,5 +8,5 @@
                 <li><span class="details-li">Classification:</span>&nbsp;<%= log.classification %></li>
                 <li><span class="details-li">Notes:</span>&nbsp;<%= log.notes %></li>
             <div class="details-button"><button><a href="./edit/<%= log._id %>">Edit</a></button>
-    <form action="./books/<%= log._id %>?_method=DELETE" method="POST"><button>Delete</button></div>
+    <form action="./<%= log._id %>?_method=DELETE" method="POST"><button>Delete</button></div>
 <%- include ('../partials/footer') -%>

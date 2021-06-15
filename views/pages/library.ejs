@@ -35,8 +35,15 @@
             <% } %> <div class="map-view"><span class="link-highlight">Map View</span></div></a></h6>
         </div>
                 <div class="imgs">
+                   <% if (data[0]) { %>
+                    <% console.log(data[0]) %>
                     <% for (log of data) { %>
                         <%- include ('../partials/logcard', { log: log})  -%>
-                  <%  } %>
+                        <%  } %>
+                    <% } else { %>
+                        <div class="library-else"><h5 class="center">Looks like you haven't created any entries yet!</h5>
+                        <a href="/library/new"><button class="library-button">Create your first log!</button></a>
+                        </div>
+                            <%  } %>
                 </div>
 <%- include ('../partials/footer') -%>
