@@ -60,6 +60,8 @@ font-size: 2.5rem;
     --edit-link-color: var(--primary-edit-link-color);
     --details-link-color: var(--primary-font-color);
     --library-card-bg: var(--primary-nav-link-hover-color);
+    --link-highlight-color: var(--white);
+    --details-li: var(--white)
 }
 
 .light {
@@ -73,6 +75,7 @@ font-size: 2.5rem;
     --link-hover: var(--gray4);
     --border-color: var(--blue);
     --join-link: var(--primary-nav-background);
+    --details-li: var(--gray2)
 }
 
 .dark {
@@ -84,8 +87,10 @@ font-size: 2.5rem;
     --text: var(--gray0);
     --link: var(--gray2);
     --link-hover: var(--gray3);
-    --join-link: var(--primary-nav-background);
+    --join-link: var(--indian-yellow);
     --library-card-bg: var(--gray3);
+    --link-highlight-color: var(--link-highlight-color);
+    --details-li: var(--gray2)
 }
 
 .nature {
@@ -99,6 +104,8 @@ font-size: 2.5rem;
     --link-hover: var(--nature3);
     --join-link: var(--burlywood);
     --library-card-bg: var(--french-bistre);
+    --link-highlight-color: var(--link-highlight-color);
+    --details-li: var(--gray2)
 }
 
 .mushroom {
@@ -112,6 +119,8 @@ font-size: 2.5rem;
     --link-hover: var(--indian-yellow);
     --join-link: var(--burlywood);
     --library-card-bg: var(--french-bistre);
+    --link-highlight-color: var(--link-highlight-color);
+    --details-li: var(--gray2);
 }
 
 @font-face {
@@ -186,8 +195,6 @@ li.details a {
     text-decoration: underline;
 }
 
-
-
 .individual-card a {
     color: var(--text);
 }
@@ -242,6 +249,9 @@ p {
 .text-gray2 {
     color: var(--gray2)
 }
+.details-li {
+    color: var(--details-li)
+}
 
 .text-gray4 {
     color: var(--gray1)
@@ -253,7 +263,6 @@ p {
 .show {
     display: block;
 }
-
 
 .notebook {
     flex-direction: column;
@@ -303,6 +312,9 @@ p {
     display:none;
 }
 
+.main h3 {
+    font-size: 1rem;
+}
 
 ul li.theme {
     margin: 0.6em auto;
@@ -400,7 +412,7 @@ ul li.theme-button {
     text-align: center;
 }
 .resources h5 {
-    text-align: center;
+    text-align: left;
 }
 
 .notebook .resources {
@@ -433,8 +445,9 @@ ul.resources {
 }
 
 .notebook p {
-    width: 90%;
-    margin: .7em auto;
+    width: 100%;
+    margin: .5em auto;
+    font-size: .5em;
 }
 
 .login-form {
@@ -591,7 +604,7 @@ justify-content: center;
     margin: 0em auto;
     margin-top: 0.5em;
     width:90%;
-    height: 70%;
+    height: 65%;
 }
 
 .infowindow {
@@ -608,7 +621,7 @@ justify-content: center;
 }
 
 .help-links a {
-    padding: 0.5em;
+    padding: 0.1em;
 }
 
 ul.details-page > * {
@@ -651,7 +664,8 @@ ul.details-page > * {
 }
 
 .about-container p {
-    margin-bottom: 2em;
+    margin-bottom: 1.3em;
+    font-size: .4em;
 }
 .about-container h6 {
     margin-bottom: 0em;
@@ -727,6 +741,15 @@ ul.nav-smaller-width {
 ul.details-page > * {
     width:40%;
 }
+.about-container p {
+    font-size: 22px;
+}
+.notebook p {
+    width: 90%;
+    margin: .7em auto;
+    font-size: 30px;
+}
+
 }
 /*tablet*/
 @media screen and (min-width:768px) {
@@ -755,6 +778,15 @@ ul.details-page > * {
         ul.details-page > * {
             width:50%;
         }
+        .about-container p {
+            font-size: 22px;
+        }
+        .notebook p {
+            width: 90%;
+            margin: .7em auto;
+            font-size: 30px;
+        }
+        
     }
 /*mobile text sizes*/
 @media screen and (min-width: 480px) {
