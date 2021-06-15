@@ -574,7 +574,7 @@ div.library-sort {
 }
 
 .individual-card ul {
-    height:100%;
+    height:250px;
     padding: 0.2em;
     margin: 0.15em 0em;
 }
@@ -757,7 +757,7 @@ ul.details-page > * {
 .notebook p {
     width: 90%;
     margin: .7em auto;
-    font-size: 30px;
+    font-size: 24px;
 }
 
 }
@@ -794,7 +794,7 @@ ul.details-page > * {
         .notebook p {
             width: 90%;
             margin: .7em auto;
-            font-size: 30px;
+            font-size: 25px;
         }
         
     }
