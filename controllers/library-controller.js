@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
 });
 
 const imageFileFilter = (req, file, cb) => {
-    if (!file.originalname.toLowerCase().match(/\.(jpg|jpeg|png|gif)$/)) {
+    if (!file.originalname.match.toLowerCase()(/\.(jpg|jpeg|png|gif)$/)) {
         return cb(new Error('You can upload only image files!'), false);
     }
     cb(null, true);
@@ -25,7 +25,7 @@ module.exports = {
     library_get: (request, response) => {
         if (request.isAuthenticated()) {
             let query;
-                Log.find({ user_id: request.user._id }).sort({ date: 1 }).exec(function (error, all_Logs) {
+                Log.find({}).sort({ date: 1 }).exec(function (error, all_Logs) {
                     if (error) {
                         return error
                     } else {
@@ -70,8 +70,6 @@ module.exports = {
                     img2: request.body.img2,
                     img3: request.body.img3,
                     img4: request.body.img4,
-                    user_id: request.user._id,
-                    username: request.user.username,
                 })
                 newLog.save();
             } else {
@@ -85,16 +83,12 @@ module.exports = {
                     img2: request.body.img2,
                     img3: request.body.img3,
                     img4: request.body.img4,
-                    user_id: request.user._id,
-                    username: request.user.username,
                 })
                 newLog.save();
-            }response.redirect('/library')
-        } else {
-            response.redirect('../login')
+            }
         }
+        response.redirect('/library')
     }],
-    
     id_details_put: (request, response) => {
         const { id } = request.params;
         Log.findByIdAndUpdate(id, {
@@ -109,8 +103,6 @@ module.exports = {
                 img2: request.body.img2,
                 img3: request.body.img3,
                 img4: request.body.img4,
-                user_id: request.user._id,
-                username: request.user.username,
             }
         }, { new: true }, error => {
             if (error) {
@@ -201,7 +193,7 @@ module.exports = {
                 response.render('pages/map-view', { data: result, mapsAPI: mapsAPI, query: season })
             });
         } else if (season === "all") {
-            Log.find({ user_id : request.user._id }, (error, all_Logs) => {
+            Log.find({}, (error, all_Logs) => {
                 if (error) {
                     return error
                 } else {

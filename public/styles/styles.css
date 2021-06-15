@@ -163,8 +163,7 @@ button {
     display: flex;
     justify-content: center;
     margin: 0 auto; 
-    padding: .3em .8em;
-    /* width:100px; */
+    width:100px;
 }
 
 .individual-card button {
@@ -564,6 +563,7 @@ div.library-sort {
     justify-content: center;
 }
 
+
 .individual-card {
     margin: 1em;
     width: 280px;
@@ -687,9 +687,6 @@ ul.details-page > * {
     margin-bottom: 1.3em;
 }
 
-.library-else  *{
-    margin: 1em auto;
-}
 
 /* desktop */
 @media screen and (min-width: 1024px) {

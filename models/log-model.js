@@ -19,7 +19,7 @@ const logSchema = new Schema ({
     },
     img1: {
         type: String,
-        required: [true, "Please upload an image ending with .jpg, .jpeg, .png, .gif."]
+        required: [true, "Please upload an image."]
     },
     img2: {
         type: String,
@@ -34,13 +34,6 @@ const logSchema = new Schema ({
         type: Date,
         default: Date.now,
     },
-    user_id: {
-        type: String,
-    },
-    username: {
-        type: String,
-    }
-
 })
 
 const Log = mongoose.model('Log', logSchema);
