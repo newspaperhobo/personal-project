@@ -664,10 +664,9 @@ ul.details-page > * {
 }
 
 .about-container p {
-    margin-bottom: 1.3em;
-    font-size: .40em;
+    margin-bottom: 1.4em;
+    font-size: .4em;
     width:90%;
-    text-align: center;
 }
 .about-container h6 {
     margin-bottom: 0em;
@@ -676,6 +675,10 @@ ul.details-page > * {
 .container-width-90 {
     width: 90%;
     margin: 0 auto;
+}
+.container-width-90 p{
+    width: 100%;
+    margin-bottom: 1.3em;
 }
 
 
