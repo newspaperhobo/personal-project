@@ -691,9 +691,6 @@ ul.details-page > * {
     margin: 1em auto;
 }
 
-
-
-
 /* desktop */
 @media screen and (min-width: 1024px) {
     .nav-icon {
