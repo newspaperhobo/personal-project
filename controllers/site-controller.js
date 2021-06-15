@@ -76,86 +76,18 @@ module.exports = {
     response.render('pages/help')
   },
   resources: (request, response) => {
-    response.render('pages/resources')
+    response.render('pages/resources', {user: request.user })
   },
   library_map_get: (request, response) => {
     if (request.isAuthenticated()) {
-<<<<<<< HEAD
-      let header = request.headers.referer
-      header = header.slice(-6)
-      let query;
-    if (header === "spring") {
-      Log.aggregate().project({
-        name: 1,
-        coords: 1,
-        date: 1,
-        img1: 1,
-        month: {
-          $month: "$date"
-        }
-      }).match({
-        month: { $gte: 3, $lte: 5 }
-      }).exec(function (err, result) {
-        response.render('pages/map-view', { data: result, query: header, mapsAPI: mapsAPI })
-      });
-    }  else if (header === "summer") {
-      Log.aggregate().project({
-        name: 1,
-        coords: 1,
-        date: 1,
-        img1: 1,
-        month: {
-          $month: "$date"
-        }
-      }).match({
-        month: { $gte: 6, $lte: 8 }
-      }).exec(function (err, result) {
-        response.render('pages/map-view', { data: result, query: header, mapsAPI: mapsAPI })
-      });
-    } else if (header === "autumn") {
-      Log.aggregate().project({
-        name: 1,
-        coords: 1,
-        date: 1,
-        img1: 1,
-        month: {
-          $month: "$date"
-        }
-      }).match({
-        month: { $gte: 9, $lte: 11 }
-      }).exec(function (err, result) {
-        response.render('pages/map-view', { data: result, mapsAPI: mapsAPI, query: header })
-      });
-    } else if (header === "winter") {
-      Log.aggregate().project({
-        name: 1,
-        coords: 1,
-        date: 1,
-        img1: 1,
-        month: {
-          $month: "$date"
-        }
-      }).match({
-        $or: [{ month: 12 }, { month: { $gte: 1, $lte: 2 } }]
-      }).exec(function (err, result) {
-        response.render('pages/map-view', { data: result, mapsAPI: mapsAPI, query: header })
-      });
-    }
-    else { Log.find({}, (error, all_Logs) => {
-=======
       let query; 
       Log.find({}, (error, all_Logs) => {
->>>>>>> experimentbranchv1
       if (error) {
         return error
       } else {
         response.render('pages/map-view', { data: all_Logs, mapsAPI: mapsAPI, query: query })
       }
     })
-<<<<<<< HEAD
-  }
-=======
->>>>>>> experimentbranchv1
     } else {
         response.redirect('../login')
     }

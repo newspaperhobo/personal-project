@@ -1,14 +1,18 @@
 <%- include ('../partials/head') -%>
-<%- include ('../partials/navloggedin') -%>
-        <h2 class="center">Resources</h2><div class="resources">
-            <div class="video-book-container"><div class="videos-container"><h4>Videos</h4>
+<% if (user) { %>
+    <%- include ('../partials/navloggedin') -%>
+    <% } else { %>
+    <%- include ('../partials/navpublic') -%>
+    <% } %>
+        <h3 class="center underline">Resources</h3><div class="resources">
+            <div class="video-book-container"><div class="videos-container"><h5>Videos</h5>
             <ul>
                 <li><a href="https://www.youtube.com/channel/UCcbf8wnyVJl631LAmAbo7nw" target="_blank" rel="noopener noreferrer">Learn Your Land</a>
                 </li>
                 <li><a href="https://www.youtube.com/channel/UC68xQe4fiYln7j4sktE1ZpA" target="_blank" rel="noopener noreferrer">Son Of A Bear</a></li>
             </ul>
         </div>
-            <div class="books-container"><h4>Books</h4>
+            <div class="books-container"><h5>Books</h5>
             <ul class="books">
                 <li><a href="https://www.amazon.com/Mushrooms-Northeastern-United-States-Eastern/dp/1604696346" target="_blank" rel="noopener noreferrer"><img src="/imgs/resources/mushroomsofNEUS.jpeg"><span class="book-text">Mushrooms of the Northeastern US</span></a>
                 </li>
@@ -16,9 +20,9 @@
             </ul>
         </div>
             </div>
-            <h4>Sites</h4>
+            <h5>Sites</h5>
             <ul>
-                <li><a href="https://www.facebook.com/groups/330632460416930" target="_blank" rel="noopener noreferrer">New England Mushroom Identification Forum</a>
+                <li><a href="https://www.facebook.com/groups/330632460416930" target="_blank" rel="noopener noreferrer">New England Mushroom ID Forum</a>
                 </li>
                 <li><a href="https://www.facebook.com/The-3-Foragers-118852208201771/" target="_blank" rel="noopener noreferrer">3 Foragers</a></li>
                 <li><a href="https://www.bostonmycologicalclub.org/" target="_blank" rel="noopener noreferrer">Boston Mycological Club</a></li>

@@ -132,7 +132,7 @@ body {
     color: var(--text);
 }
 
-h2, h3, h4, h6 {
+h2, h3, h4,h5, h6 {
     margin: 0;
     padding: 0;
 }
@@ -397,6 +397,9 @@ ul li.theme-button {
     width: 100%;
     margin: 0 auto;
     padding: 0;
+    text-align: center;
+}
+.resources h5 {
     text-align: center;
 }
 
@@ -744,7 +747,7 @@ ul.details-page > * {
         #map2 {
             margin-top: 0.5em;
             width:90%;
-            height: 75%;
+            height: 70%;
         }
         .main h3 {
             font-size: 60px;
