@@ -22,7 +22,17 @@
                 </select>
             <button type="submit">Search</button>
         </form>
-        <h6 class="flex-right"><a href="./map_view"><div class="map-view"><span class="link-highlight">Map View</span></div></a></h6>
+        <h6 class="flex-right">  <% if (query === "spring") { %>
+            <a href="/library/map_search?subSort=spring">
+        <% } else if (query === "summer") { %>
+            <a href="/library/map_search?subSort=summer">
+        <% } else if (query === "autumn") { %>
+            <a href="/library/map_search?subSort=autumn">
+        <% } else if (query === "winter") { %>
+            <a href="/library/map_search?subSort=winter">
+        <% } else { %> 
+            <a href="./map_view">
+            <% } %> <div class="map-view"><span class="link-highlight">Map View</span></div></a></h6>
         </div>
                 <div class="imgs">
                     <% for (log of data) { %>

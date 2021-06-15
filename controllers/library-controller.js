@@ -25,81 +25,14 @@ module.exports = {
     library_get: (request, response) => {
         if (request.isAuthenticated()) {
             let query;
-            let header = request.headers.referer
-            header = header.slice(-6)
-            if (header === "spring") {
-                Log.aggregate().project({
-                    name: 1,
-                    coords: 1,
-                    date: 1,
-                    img1: 1,
-                    month: {
-                        $month: "$date"
-                    }
-                }).match({
-                    month: { $gte: 3, $lte: 5 }
-                }).exec(function (err, result) {
-                    response.render('pages/library', { data: result, query: header, mapsAPI: mapsAPI })
-                });
-            } else if (header === "summer") {
-                Log.aggregate().project({
-                    name: 1,
-                    coords: 1,
-                    date: 1,
-                    img1: 1,
-                    month: {
-                        $month: "$date"
-                    }
-                }).match({
-                    month: { $gte: 6, $lte: 8 }
-                }).exec(function (err, result) {
-                    response.render('pages/library', { data: result, query: header, mapsAPI: mapsAPI })
-                });
-            } else if (header === "autumn") {
-                Log.aggregate().project({
-                    name: 1,
-                    coords: 1,
-                    date: 1,
-                    img1: 1,
-                    month: {
-                        $month: "$date"
-                    }
-                }).match({
-                    month: { $gte: 9, $lte: 11 }
-                }).exec(function (err, result) {
-                    response.render('pages/library', { data: result, mapsAPI: mapsAPI, query: header })
-                });
-            } else if (header === "winter") {
-                Log.aggregate().project({
-                    name: 1,
-                    coords: 1,
-                    date: 1,
-                    img1: 1,
-                    month: {
-                        $month: "$date"
-                    }
-                }).match({
-                    $or: [{ month: 12 }, { month: { $gte: 1, $lte: 2 } }]
-                }).exec(function (err, result) {
-                    response.render('pages/library', { data: result, mapsAPI: mapsAPI, query: header })
-                });
-            } else {
                 Log.find({}).sort({ date: 1 }).exec(function (error, all_Logs) {
                     if (error) {
                         return error
                     } else {
-                        response.render('pages/library', { data: all_Logs, mapsAPI: mapsAPI, query: header })
+                        response.render('pages/library', { data: all_Logs, mapsAPI: mapsAPI, query: query })
                     }
                 });
-            }
-        } else {
-            response.redirect('../login')
-        }
-    },
-    create_pin_get: (request, response) => {
-        if (request.isAuthenticated()) {
-            response.render('pages/create-pin', { mapsAPI: mapsAPI })
-        } else {
+            } else {
             response.redirect('../login')
         }
     },
@@ -206,7 +139,7 @@ module.exports = {
     map_search_get: (request, response) => {
         const query = request.query;
         const season = query.subSort;
-        // if (request.isAuthenticated()) {
+        if (request.isAuthenticated()) {
         if (season === "spring") {
             Log.aggregate().project({
                 name: 1,
@@ -270,6 +203,9 @@ module.exports = {
         } else {
             response.redirect('library/map_view');
         }
+    } else {
+        response.redirect('../login')
     }
+}
 }
 

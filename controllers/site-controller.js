@@ -80,6 +80,7 @@ module.exports = {
   },
   library_map_get: (request, response) => {
     if (request.isAuthenticated()) {
+<<<<<<< HEAD
       let header = request.headers.referer
       header = header.slice(-6)
       let query;
@@ -141,13 +142,20 @@ module.exports = {
       });
     }
     else { Log.find({}, (error, all_Logs) => {
+=======
+      let query; 
+      Log.find({}, (error, all_Logs) => {
+>>>>>>> experimentbranchv1
       if (error) {
         return error
       } else {
         response.render('pages/map-view', { data: all_Logs, mapsAPI: mapsAPI, query: query })
       }
     })
+<<<<<<< HEAD
   }
+=======
+>>>>>>> experimentbranchv1
     } else {
         response.redirect('../login')
     }
