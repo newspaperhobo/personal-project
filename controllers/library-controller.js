@@ -83,6 +83,8 @@ module.exports = {
                     img2: request.body.img2,
                     img3: request.body.img3,
                     img4: request.body.img4,
+                    user_id: request.user._id,
+                    username: request.user.username,
                 })
                 newLog.save();
             }response.redirect('/library')
@@ -104,6 +106,8 @@ module.exports = {
                 img2: request.body.img2,
                 img3: request.body.img3,
                 img4: request.body.img4,
+                user_id: request.user._id,
+                username: request.user.username,
             }
         }, { new: true }, error => {
             if (error) {
