@@ -665,11 +665,17 @@ ul.details-page > * {
 
 .about-container p {
     margin-bottom: 1.3em;
-    font-size: .45em;
+    font-size: .40em;
     width:90%;
+    text-align: center;
 }
 .about-container h6 {
     margin-bottom: 0em;
+}
+
+.container-width-90 {
+    width: 90%;
+    margin: 0 auto;
 }
 
 
