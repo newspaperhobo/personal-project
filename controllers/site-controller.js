@@ -96,7 +96,7 @@ module.exports = {
       const query = request.query;
       const season = query.subSort;
       if (season === "spring") {
-        Log.find({user_id : request.user._id}).aggregate().project({
+        Log.aggregate().project({
           name: 1,
           coords: 1,
           date: 1,
