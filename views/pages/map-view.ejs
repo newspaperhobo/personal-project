@@ -32,7 +32,19 @@
 </select>
 <button type="submit">Search</button>
 </form>
-<h6 class="flex-right"><a href="/library"><span class="link-highlight">List View</span></a></h6>
+<h6 class="flex-right">
+    <% if (query === "spring") { %>
+        <a href="/library_search?subSort=spring">
+    <% } else if (query === "summer") { %>
+        <a href="/library_search?subSort=summer">
+    <% } else if (query === "autumn") { %>
+        <a href="/library_search?subSort=autumn">
+    <% } else if (query === "winter") { %>
+        <a href="/library_search?subSort=winter">
+    <% } else { %> 
+        <a href="/library">
+        <% } %> 
+<span class="link-highlight">List View</span></a></h6>
 </div>
         <div id="map2"></div>
 <script src="<%= mapsAPI %>" async ></script>
