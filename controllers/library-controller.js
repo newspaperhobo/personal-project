@@ -94,6 +94,7 @@ module.exports = {
             response.redirect('../login')
         }
     }],
+    
     id_details_put: (request, response) => {
         const { id } = request.params;
         Log.findByIdAndUpdate(id, {
