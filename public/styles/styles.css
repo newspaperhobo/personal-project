@@ -665,7 +665,8 @@ ul.details-page > * {
 
 .about-container p {
     margin-bottom: 1.3em;
-    font-size: .4em;
+    font-size: .5em;
+    width:90%;
 }
 .about-container h6 {
     margin-bottom: 0em;
