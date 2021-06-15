@@ -89,6 +89,7 @@ module.exports = {
         }
         response.redirect('/library')
     }],
+    
     id_details_put: (request, response) => {
         const { id } = request.params;
         Log.findByIdAndUpdate(id, {
