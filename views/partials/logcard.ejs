@@ -5,7 +5,6 @@
         <ul>
             <li><span class=" text-gray4">Date:</span> <%= log.date.toLocaleDateString() %></li>
             <li><span class="text-gray4">Name:</span> <%= log.name %></li>
-            <li><span class="text-gray4">Type:</span> <%= log.classification %></li>
             <li class="details"><a href="library/<%= log._id %>">Details</a></li>
             <div class="individual-card-button-container"><li class="edit"><button><a href="library/edit/<%= log._id %>">Edit</button></a></li>
             <form action="/library/<%= log._id %>?_method=DELETE" method="POST"><button class="delete">Delete</button></form>
