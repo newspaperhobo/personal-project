@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
 });
 
 const imageFileFilter = (req, file, cb) => {
-    if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/)) {
+    if (!file.originalname.toLowerCase().match(/\.(jpg|jpeg|png|gif)$/)) {
         return cb(new Error('You can upload only image files!'), false);
     }
     cb(null, true);
@@ -70,8 +70,6 @@ module.exports = {
                     img2: request.body.img2,
                     img3: request.body.img3,
                     img4: request.body.img4,
-                    user_id: request.user._id,
-                    username: request.user.username,
                 })
                 newLog.save();
             } else {
@@ -85,13 +83,12 @@ module.exports = {
                     img2: request.body.img2,
                     img3: request.body.img3,
                     img4: request.body.img4,
-                    user_id: request.user._id,
-                    username: request.user.username,
                 })
                 newLog.save();
-            }
+            }response.redirect('/library')
+        } else {
+            response.redirect('../login')
         }
-        response.redirect('/library')
     }],
     id_details_put: (request, response) => {
         const { id } = request.params;
@@ -197,7 +194,7 @@ module.exports = {
                 response.render('pages/map-view', { data: result, mapsAPI: mapsAPI, query: season })
             });
         } else if (season === "all") {
-            Log.find({}, (error, all_Logs) => {
+            Log.find({ user_id : request.user._id }, (error, all_Logs) => {
                 if (error) {
                     return error
                 } else {

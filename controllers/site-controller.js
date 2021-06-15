@@ -81,7 +81,7 @@ module.exports = {
   library_map_get: (request, response) => {
     if (request.isAuthenticated()) {
       let query; 
-      Log.find({}, (error, all_Logs) => {
+      Log.find({ user_id: request.user._id }, (error, all_Logs) => {
       if (error) {
         return error
       } else {
@@ -96,7 +96,7 @@ module.exports = {
       const query = request.query;
       const season = query.subSort;
       if (season === "spring") {
-        Log.aggregate().project({
+        Log.find({user_id : request.user._id}).aggregate().project({
           name: 1,
           coords: 1,
           date: 1,
@@ -152,7 +152,7 @@ module.exports = {
           response.render('pages/library', { data: result, mapsAPI: mapsAPI, query: season })
         });
       } else if (season === "all") {
-        Log.find({}).sort({ date: 1 }).exec(function (error, all_Logs) {
+        Log.find({ user_id : request.user._id }).sort({ date: 1 }).exec(function (error, all_Logs) {
           if (error) {
             return error
           } else {
