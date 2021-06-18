@@ -24,9 +24,10 @@ const upload = multer({ storage: storage, fileFilter: imageFileFilter });
 
 module.exports = {
     library_get: (request, response) => {
+        let query;
+        let userReq = request.user._id.toString()
         if (request.isAuthenticated()) {
-            let query;
-                Log.find({}).sort({ date: 1 }).exec(function (error, all_Logs) {
+                Log.find({ user_id: userReq }).sort({ date: 1 }).exec(function (error, all_Logs) {
                     if (error) {
                         return error
                     } else {
@@ -140,6 +141,7 @@ module.exports = {
     map_search_get: (request, response) => {
         const query = request.query;
         const season = query.subSort;
+        let userReq = request.user._id.toString()
         if (request.isAuthenticated()) {
         if (season === "spring") {
             Log.aggregate().project({
@@ -148,8 +150,10 @@ module.exports = {
                 date: 1,
                 month: {
                     $month: "$date"
-                }
+                },
+                user_id: 1,
             }).match({
+                user_id: userReq,
                 month: { $gte: 3, $lte: 5 }
             }).exec(function (err, result) {
                 response.render('pages/map-view', { data: result, mapsAPI: mapsAPI, query: season })
@@ -161,8 +165,10 @@ module.exports = {
                 date: 1,
                 month: {
                     $month: "$date"
-                }
+                },
+                user_id: 1,
             }).match({
+                user_id: userReq,
                 month: { $gte: 6, $lte: 8 }
             }).exec(function (err, result) {
                 response.render('pages/map-view', { data: result, mapsAPI: mapsAPI, query: season })
@@ -174,8 +180,10 @@ module.exports = {
                 date: 1,
                 month: {
                     $month: "$date"
-                }
+                },
+                user_id: 1,
             }).match({
+                user_id: userReq,
                 month: { $gte: 9, $lte: 11 }
             }).exec(function (err, result) {
                 response.render('pages/map-view', { data: result, mapsAPI: mapsAPI, query: season })
@@ -187,14 +195,16 @@ module.exports = {
                 date: 1,
                 month: {
                     $month: "$date"
-                }
+                },
+                user_id: 1,
             }).match({
+                user_id: userReq,
                 $or: [{ month: 12 }, { month: { $gte: 1, $lte: 2 } }]
             }).exec(function (err, result) {
                 response.render('pages/map-view', { data: result, mapsAPI: mapsAPI, query: season })
             });
         } else if (season === "all") {
-            Log.find({}, (error, all_Logs) => {
+            Log.find({ user_id : userReq }, (error, all_Logs) => {
                 if (error) {
                     return error
                 } else {

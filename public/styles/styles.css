@@ -687,6 +687,13 @@ ul.details-page > * {
     margin-bottom: 1.3em;
 }
 
+.library-else  *{
+    margin: 0.5em auto;
+}
+
+.library-button {
+    width:200px;
+}
 
 /* desktop */
 @media screen and (min-width: 1024px) {

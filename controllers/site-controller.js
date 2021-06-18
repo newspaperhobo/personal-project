@@ -79,9 +79,10 @@ module.exports = {
     response.render('pages/resources', {user: request.user })
   },
   library_map_get: (request, response) => {
+    let query; 
+    let userReq = request.user._id.toString()
     if (request.isAuthenticated()) {
-      let query; 
-      Log.find({}, (error, all_Logs) => {
+      Log.find({ user_id: userReq }, (error, all_Logs) => {
       if (error) {
         return error
       } else {
@@ -92,9 +93,10 @@ module.exports = {
         response.redirect('../login')
     }
   }, library_search_get: (request, response) => {
+    const query = request.query;
+    const season = query.subSort;
+    let userReq = request.user._id.toString()
     if (request.isAuthenticated()) {
-      const query = request.query;
-      const season = query.subSort;
       if (season === "spring") {
         Log.aggregate().project({
           name: 1,
@@ -103,8 +105,10 @@ module.exports = {
           img1: 1,
           month: {
             $month: "$date"
-          }
+          },
+          user_id: 1
         }).match({
+          user_id: userReq,
           month: { $gte: 3, $lte: 5 }
         }).exec(function (err, result) {
           response.render('pages/library', { data: result, mapsAPI: mapsAPI, query: season })
@@ -117,8 +121,10 @@ module.exports = {
           img1: 1,
           month: {
             $month: "$date"
-          }
+          },
+          user_id: 1
         }).match({
+          user_id: userReq,
           month: { $gte: 6, $lte: 8 }
         }).exec(function (err, result) {
           response.render('pages/library', { data: result, mapsAPI: mapsAPI, query: season })
@@ -131,8 +137,10 @@ module.exports = {
           img1: 1,
           month: {
             $month: "$date"
-          }
+          },
+          user_id: 1
         }).match({
+          user_id: userReq,
           month: { $gte: 9, $lte: 11 }
         }).exec(function (err, result) {
           response.render('pages/library', { data: result, mapsAPI: mapsAPI, query: season })
@@ -145,14 +153,16 @@ module.exports = {
           img1: 1,
           month: {
             $month: "$date"
-          }
+          },
+          user_id: 1
         }).match({
+          user_id: userReq,
           $or: [{ month: 12 }, { month: { $gte: 1, $lte: 2 } }]
         }).exec(function (err, result) {
           response.render('pages/library', { data: result, mapsAPI: mapsAPI, query: season })
         });
       } else if (season === "all") {
-        Log.find({}).sort({ date: 1 }).exec(function (error, all_Logs) {
+        Log.find({ user_id : userReq }).sort({ date: 1 }).exec(function (error, all_Logs) {
           if (error) {
             return error
           } else {
