@@ -163,8 +163,7 @@ button {
     display: flex;
     justify-content: center;
     margin: 0 auto; 
-    padding: .3em .8em;
-    /* width:100px; */
+    width:100px;
 }
 
 .individual-card button {
@@ -688,7 +687,11 @@ ul.details-page > * {
 }
 
 .library-else  *{
-    margin: 1em auto;
+    margin: 0.5em auto;
+}
+
+.library-button {
+    width:200px;
 }
 
 /* desktop */
