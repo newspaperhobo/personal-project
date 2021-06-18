@@ -95,7 +95,8 @@ module.exports = {
     if (request.isAuthenticated()) {
       const query = request.query;
       const season = query.subSort;
-      const userReq = request.user._id
+      const userReq = request.user._id.toString
+      console.log(typeof userReq)
       if (season === "spring") {
         Log.aggregate().project({
           name: 1,
@@ -105,14 +106,16 @@ module.exports = {
           month: {
             $month: "$date"
           },
+          user_id: 1
         }).match({
-          user: userReq,
           month: { $gte: 3, $lte: 5 }
         }).exec(function (err, result) {
           response.render('pages/library', { data: result, mapsAPI: mapsAPI, query: season })
         });
       } else if (season === "summer") {
-        Log.aggregate().project({
+        Log.aggregate().match({
+          user_id: userReq
+        }).project({
           name: 1,
           coords: 1,
           date: 1,
@@ -120,9 +123,11 @@ module.exports = {
           month: {
             $month: "$date"
           },
+          user_id: 1
         }).match({
           user_id: userReq,
-          month: { $gte: 6, $lte: 8 }
+        }).match({
+          month: { $gte: 3, $lte: 5 }
         }).exec(function (err, result) {
           response.render('pages/library', { data: result, mapsAPI: mapsAPI, query: season })
         });
@@ -135,6 +140,7 @@ module.exports = {
           month: {
             $month: "$date"
           },
+          user_id: 1
         }).match({
           user_id: userReq,
           month: { $gte: 9, $lte: 11 }
@@ -150,6 +156,7 @@ module.exports = {
           month: {
             $month: "$date"
           },
+          user_id: 1
         }).match({
           user_id: userReq,
           $or: [{ month: 12 }, { month: { $gte: 1, $lte: 2 } }]

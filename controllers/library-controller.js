@@ -156,7 +156,7 @@ module.exports = {
                 month: {
                     $month: "$date"
                 },
-                user_id,
+                user_id: 1,
             }).match({
                 user_id: userReq,
                 month: { $gte: 3, $lte: 5 }

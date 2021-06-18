@@ -36,7 +36,6 @@
         </div>
                 <div class="imgs">
                    <% if (data[0]) { %>
-                    <% console.log(data[0]) %>
                     <% for (log of data) { %>
                         <%- include ('../partials/logcard', { log: log})  -%>
                         <%  } %>
