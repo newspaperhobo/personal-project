@@ -79,9 +79,10 @@ module.exports = {
     response.render('pages/resources', {user: request.user })
   },
   library_map_get: (request, response) => {
+    let query; 
+    let userReq = request.user._id.toString()
     if (request.isAuthenticated()) {
-      let query; 
-      Log.find({ user_id: request.user._id }, (error, all_Logs) => {
+      Log.find({ user_id: userReq }, (error, all_Logs) => {
       if (error) {
         return error
       } else {
@@ -92,11 +93,10 @@ module.exports = {
         response.redirect('../login')
     }
   }, library_search_get: (request, response) => {
+    const query = request.query;
+    const season = query.subSort;
+    let userReq = request.user._id.toString()
     if (request.isAuthenticated()) {
-      const query = request.query;
-      const season = query.subSort;
-      const userReq = request.user._id.toString
-      console.log(typeof userReq)
       if (season === "spring") {
         Log.aggregate().project({
           name: 1,
@@ -108,14 +108,13 @@ module.exports = {
           },
           user_id: 1
         }).match({
+          user_id: userReq,
           month: { $gte: 3, $lte: 5 }
         }).exec(function (err, result) {
           response.render('pages/library', { data: result, mapsAPI: mapsAPI, query: season })
         });
       } else if (season === "summer") {
-        Log.aggregate().match({
-          user_id: userReq
-        }).project({
+        Log.aggregate().project({
           name: 1,
           coords: 1,
           date: 1,
@@ -126,8 +125,7 @@ module.exports = {
           user_id: 1
         }).match({
           user_id: userReq,
-        }).match({
-          month: { $gte: 3, $lte: 5 }
+          month: { $gte: 6, $lte: 8 }
         }).exec(function (err, result) {
           response.render('pages/library', { data: result, mapsAPI: mapsAPI, query: season })
         });
@@ -164,7 +162,7 @@ module.exports = {
           response.render('pages/library', { data: result, mapsAPI: mapsAPI, query: season })
         });
       } else if (season === "all") {
-        Log.find({ user_id : request.user._id }).sort({ date: 1 }).exec(function (error, all_Logs) {
+        Log.find({ user_id : userReq }).sort({ date: 1 }).exec(function (error, all_Logs) {
           if (error) {
             return error
           } else {
