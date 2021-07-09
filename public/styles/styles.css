@@ -139,10 +139,10 @@ font-size: 2.5rem;
 
 body {
     transition: color 300ms ease-in-out;
-    padding-top: 0.1em;
     background-color: var(--bg-logout);
     font-family: var(--secondary-font-family);
     color: var(--text);
+    margin: auto;
 }
 
 h2, h3, h4,h5, h6 {
@@ -272,13 +272,13 @@ p {
     flex-direction: column;
     overflow-x: scroll;
     background-color: var(--bg-notebook);
-    height: 80vh;
+    height: 100vh;
     max-width: 768px;
-    margin: 0 auto;
+    margin: auto;
     border: 2px black solid;
     border-bottom-right-radius: 60px;
     border-top-right-radius: 60px;
-    box-shadow: 2px -5px black;
+    /* box-shadow: 2px -5px black; */
     box-sizing: border-box;
     /* theme 2 background */
     /* background-image: url('../imgs/backgrounds/amanita3.png'); */
