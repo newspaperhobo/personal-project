@@ -142,7 +142,6 @@ body {
     padding-top: 0.1em;
     background-color: var(--bg-logout);
     font-family: var(--secondary-font-family);
-    overflow-x: scroll;
     color: var(--text);
 }
 
@@ -274,7 +273,6 @@ p {
     overflow-x: scroll;
     background-color: var(--bg-notebook);
     height: 97vh;
-    min-height: 735px;
     max-width: 768px;
     margin: 0 auto;
     border: 2px black solid;
