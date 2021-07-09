@@ -143,6 +143,7 @@ body {
     background-color: var(--bg-logout);
     font-family: var(--secondary-font-family);
     color: var(--text);
+    height: 90vh;
 }
 
 h2, h3, h4,h5, h6 {
@@ -272,7 +273,6 @@ p {
     flex-direction: column;
     overflow-x: scroll;
     background-color: var(--bg-notebook);
-    height: 90vh;
     max-width: 768px;
     margin: 0 auto;
     border: 2px black solid;
