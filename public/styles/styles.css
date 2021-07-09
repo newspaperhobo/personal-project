@@ -272,7 +272,7 @@ p {
     flex-direction: column;
     overflow-x: scroll;
     background-color: var(--bg-notebook);
-    height: 97vh;
+    height: 90vh;
     max-width: 768px;
     margin: 0 auto;
     border: 2px black solid;
