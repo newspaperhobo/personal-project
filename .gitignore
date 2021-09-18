@@ -13,3 +13,6 @@
 
 # login/register page
 views/pages/login-or-register.ejs
+
+# readme
+README.md
