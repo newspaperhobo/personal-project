@@ -2,6 +2,7 @@
 <%- include ('../partials/navloggedin') -%>
         <div class="library-sort">
             <h6>Filter:</h6>
+<!-- Clicking the submit button sends a get request with form data from the dropdown selection OPTION VALUE, which populates the query string in the URL. The request.query data is anything beyond the "?" in the URL. query.subSort contains the OPTION VALUE data and passes it to the back end -->
             <form action="/library_search" method="GET">
                 <select id="subSort" name="subSort">
                     <option value="all" <%if (query === "all"){%>

@@ -16,3 +16,6 @@ views/pages/login-or-register.ejs
 
 # readme
 README.md
+
+# env template
+.envblank
