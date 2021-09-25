@@ -221,7 +221,7 @@ Kira Novak: kiranovak@gmail.com
 
 Repository Link: [https://github.com/newspaperhobo/personal-project](https://github.com/newspaperhobo/personal-project)
 
-[![LinkedIn][linkedin-shield]][https://www.linkedin.com/in/kiraenovak/]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
