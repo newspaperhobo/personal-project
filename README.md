@@ -140,11 +140,11 @@ To get a local copy up and running follow these steps.
    npm install
    ```
 3. [MongoDB](https://www.mongodb.com/) Setup
-    - Create a new project
-    - Create a free shared cluster
-      1. Select your closest location for "Cloud Provider & Region"
-      2. Cluster Tier: M0 Sandbox (Shared RAM, 512 Storage)
-      3. Do not change additional settings
+    1. Create a new project
+    2. Create a free shared cluster
+      - Select your closest location for "Cloud Provider & Region"
+      - Cluster Tier: M0 Sandbox (Shared RAM, 512 Storage)
+      - Do not change additional settings
     c. On left side dashboard, under SECURITY, click "Database Access", then click the green button "Add New Database User" on right side of screen
         - Authentication method: Password
         - Database User Privileges: "Read and write to any database"
