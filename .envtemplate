@@ -1,0 +1,6 @@
+# MongoDB URL from connecting to cluster via MongoDB native drivers (option 2 after clicking "Connect" Button on right side of cluster)
+DB_URL=
+# Assigned to variable (const mapsAPI = process.env.MAPS_URL) in library and site controllers (library and site) in order to render obscured URL and API key as EJS data/variable to pages with map script and call MAPS_URL as script source
+MAPS_URL=https://maps.googleapis.com/maps/api/js?key=pasteAPIkeyhere&callback=initMap&libraries=&v=weekly
+# For Express session (in app.js)
+SECRET_KEY=
