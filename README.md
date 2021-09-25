@@ -41,14 +41,14 @@
   <p align="center">
     A web application created to help users keep a seasonal location-based log of edible plants and mushrooms.
     <br />
-    <a href="https://github.com/newspaperhobo/personal-project"><strong>Explore the repo »</strong></a>
+    <a href="https://github.com/newspaperhobo/personal-project" target="_blank" rel="noopener noreferrer"><strong>Explore the repo »</strong></a>
     <br />
     <br />
-    <a href="https://forager-field-notes.herokuapp.com/">View Demo</a>
+    <a href="https://forager-field-notes.herokuapp.com/" target="_blank" rel="noopener noreferrer">View Demo</a>
     ·
-    <a href="https://github.com/newspaperhobo/personal-project/issues">Report Bug</a>
+    <a href="https://github.com/newspaperhobo/personal-project/issues" target="_blank" rel="noopener noreferrer">Report Bug</a>
     ·
-    <a href="https://github.com/newspaperhobo/personal-project/issues">Request Feature</a>
+    <a href="https://github.com/newspaperhobo/personal-project/issues" target="_blank" rel="noopener noreferrer">Request Feature</a>
   </p>
 </p>
 
@@ -221,7 +221,7 @@ Kira Novak: kiranovak@gmail.com
 
 Repository Link: [https://github.com/newspaperhobo/personal-project](https://github.com/newspaperhobo/personal-project)
 
-[![LinkedIn][linkedin-shield]][linkedin-url]
+[![LinkedIn][linkedin-shield]][https://www.linkedin.com/in/kiraenovak/]
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
