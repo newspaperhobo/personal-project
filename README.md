@@ -83,7 +83,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<div align=center><img width=80% src="https://raw.githubusercontent.com/newspaperhobo/personal-project/main/public/imgs/readme/libraryscreenshot.png"></div>
+<div align=center><img width=70% src="https://raw.githubusercontent.com/newspaperhobo/personal-project/main/public/imgs/readme/libraryscreenshot.png"></div>
 
 
 Created by Kira Novak as a project for [CodeSquad](https://codesquad.org/), this web application serves as a virtual logbook for foragers (those interested in harvesting wild edible plants and mushrooms) to privately track their findings by location and season. It is currently deployed as a demo for a single user, but expansion to multiple users is forthcoming.
