@@ -140,16 +140,16 @@ To get a local copy up and running follow these steps.
    npm install
    ```
 3. [MongoDB](https://www.mongodb.com/) Setup
-  1. Create a new project
-  2. Create a free shared cluster
+    a. Create a new project
+    b. Create a free shared cluster
       - Select your closest location for "Cloud Provider & Region"
       - Cluster Tier: M0 Sandbox (Shared RAM, 512 Storage)
       - Do not change additional settings
-  3. On left side dashboard, under SECURITY, click "Database Access", then click the green button "Add New Database User" on right side of screen
+    c. On left side dashboard, under SECURITY, click "Database Access", then click the green button "Add New Database User" on right side of screen
         - Authentication method: Password
         - Database User Privileges: "Read and write to any database"
         - Restrict Access to Specific Clusters/Data Lakes: OFF
-    4. On left side dashboard, under SECURITY, click "Network Access", then click the green button "Add IP Address" on right side of screen
+    d. On left side dashboard, under SECURITY, click "Network Access", then click the green button "Add IP Address" on right side of screen
         - Access List Entry: 0.0.0.0/0
     5. Navigate back to "Databases" under DEPLOYMENT on left side of screen
         - Your created cluster (Cluster0 by default) should have a "Connect" button next to it
