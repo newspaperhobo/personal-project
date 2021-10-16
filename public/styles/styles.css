@@ -143,7 +143,6 @@ body {
     background-color: var(--bg-logout);
     font-family: var(--secondary-font-family);
     color: var(--text);
-    overflow-x: scroll;
 }
 
 h2, h3, h4,h5, h6 {
