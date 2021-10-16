@@ -270,7 +270,7 @@ p {
 
 .notebook {
     flex-direction: column;
-    overflow-y: scroll;
+    overflow-y: auto;
     background-color: var(--bg-notebook);
     height: 97vh;
     max-width: 768px;
