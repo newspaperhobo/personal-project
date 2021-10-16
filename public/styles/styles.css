@@ -486,6 +486,10 @@ ul.resources {
     flex-direction: column;
 }
 
+.more-info-body {
+    overflow-y: auto
+}
+
 .more-info-body h6 {
 margin: 0.7em 0;
 }
