@@ -270,6 +270,7 @@ p {
 
 .notebook {
     flex-direction: column;
+    overflow-y: scroll;
     background-color: var(--bg-notebook);
     height: 97vh;
     max-width: 768px;
@@ -484,10 +485,6 @@ ul.resources {
 .form-flex {
     display: flex;
     flex-direction: column;
-}
-
-.more-info-body {
-    overflow-y: scroll
 }
 
 .more-info-body h6 {
