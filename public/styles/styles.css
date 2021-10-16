@@ -143,6 +143,7 @@ body {
     background-color: var(--bg-logout);
     font-family: var(--secondary-font-family);
     color: var(--text);
+    overflow-x: scroll;
 }
 
 h2, h3, h4,h5, h6 {
@@ -270,7 +271,6 @@ p {
 
 .notebook {
     flex-direction: column;
-    overflow-y: scroll;
     background-color: var(--bg-notebook);
     height: 97vh;
     max-width: 768px;
