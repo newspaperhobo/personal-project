@@ -15,7 +15,7 @@ const mongoose = require('mongoose');
 // })
 
 try {
-  await mongoose.connect("process.env.DB_URL");
+  await mongoose.connect(process.env.DB_URL);
 } catch (error) {
   handleError(error);
 }
